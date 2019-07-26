@@ -6,6 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
 
 
 
@@ -27,7 +28,7 @@ const styles = theme => ({
         // display: 'flex',
         // justifyContent: 'flex-end',
         overflowX: 'auto',
-        backgroundColor: 'yellow'
+        backgroundColor: '#bdcafc'
     },
     toolbarLink: {
         //spacing(top, sides)
@@ -36,7 +37,7 @@ const styles = theme => ({
     },  
     toolbarTitle: {
         flexGrow: 1,
-        backgroundColor:'orange'
+        // backgroundColor:'orange'
     },   
     searchBar: {
         paddingBottom: theme.spacing(3),
@@ -44,6 +45,13 @@ const styles = theme => ({
     navigation: {
         paddingRight: theme.spacing(2),
     },
+    logoLink: {
+        textDecoration: 'none',
+        color: 'black',
+        '&:hover': {
+            color: 'red',
+        },
+    }
 });
 
 class AppMenu extends React.Component {
@@ -57,7 +65,11 @@ class AppMenu extends React.Component {
                     {/* <Link href='/'>
                         BioStock
                     </Link> */}
-                    <Link to="/">BioStock</Link> 
+                    <Link className={classes.logoLink} to="/">                    
+                    <Box fontFamily="Signika" fontWeight="500" m={1}>
+                        BioStock
+                    </Box>
+                    </Link> 
                 </Typography>
                 <nav className={classes.navigation}>
                     {/* <Link className={classes.toolbarLink}>Tutorials</Link>

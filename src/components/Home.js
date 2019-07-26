@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
             },
             '& $imageSrc': {
                 transform: 'scale(1.1)',
-                transition: 'all 0.8s ease-in',
+                transition: 'all 0.25s ease-in',
                 
 
             }

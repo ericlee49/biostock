@@ -10,6 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
+import Box from '@material-ui/core/Box';
 
 
 
@@ -52,6 +53,7 @@ export default function Requests() {
         setConfirmationDialogOpen(false);
     }    
     return (
+        <Box pt={10}>
         <Container component="main" maxWidth="sm">
             <ConfirmationDialog open={confimrationDialogOpen} onClose={handleClose}/>
             <Typography component="h1" variant="h5">
@@ -112,5 +114,6 @@ export default function Requests() {
 
             </form>
         </Container>
+        </Box>
     )
 }
