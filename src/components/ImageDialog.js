@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
 
     },
     centerGrid: {
-        verticalAlign: "middle",
-        minHeight: '50vh',
-        justifyContent: "center",
+        // verticalAlign: "middle",
+        // minHeight: '50vh',
+        // justifyContent: "center",
     }
 
 }));
@@ -41,11 +41,11 @@ export default function ImageDialog2(props) {
         <Dialog 
             open={open}
             fullWidth={true}
-            maxWidth="md"
+            maxWidth="xs"
             onClose={handleClose}
         >
             <Grid  container>
-            <Grid item xs={12} md={9}>
+            <Grid item xs={12}>
             <Grid
                 container
                 direction="column"
@@ -57,24 +57,12 @@ export default function ImageDialog2(props) {
                 
                 
             </Grid>
-            <Grid item xs={12} md={3} className={classes.listStyle}>
+            <Grid item xs={12} className={classes.listStyle}>
                 <List >
                     <ListItem>
                         <Typography variant="h4">
                             Nucleus
                         </Typography>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText
-                            primary="Single-line item"
-                            secondary='Secondary text'
-                        />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText
-                            primary="Single-line item"
-                            secondary='Secondary text'
-                        />
                     </ListItem>
                     <ListItem>
                         <ListItemText

@@ -37,4 +37,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## BioStock
 
+### Fonts:
+Currently using typeface-signika.  Installed through npm.  Visit [https://www.npmjs.com/package/typeface-signika](https://www.npmjs.com/package/typeface-signika) for details.  Also to play with the font, checkout: [https://fonts.google.com/specimen/Signika](Google Fonts).
 

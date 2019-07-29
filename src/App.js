@@ -13,7 +13,6 @@ class App extends React.Component {
     return (
     <div className="App">
       <AppMenu/>
-      {/* <BioStockHeader/> */}
       <Switch>
         <Route exact path='/' component={Home}/>
         <Route exact path='/requests' component={Requests}/>
