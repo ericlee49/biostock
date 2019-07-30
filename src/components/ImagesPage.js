@@ -6,6 +6,21 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { makeStyles } from '@material-ui/styles';
 import ImageDialog2 from './ImageDialog';
+import {Query} from 'react-apollo';
+import gql from 'graphql-tag';
+
+// GraphQL query:
+const STOCKPHOTO_QUERY = gql `
+    {
+        stockphotos {
+            _id
+            title
+            image {
+                url
+            }
+        }
+    }
+`;
 
 
 // Styles:
@@ -40,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     imageGallery: {
         paddingTop: 40,
         paddingBottom: 40,       
-        backgroundColor: "red",
+        backgroundColor: "orange",
     },
     imageCard: {
         display: 'flex',
@@ -78,7 +93,7 @@ function ImageCard(props) {
                 onClick={handleClick}
             >
                 <CardMedia 
-                    image={require('../assets/nucleus.png')}
+                    image={imageLink}
                     title={title}
                     className={classes.cardMedia}
                 />
@@ -102,10 +117,37 @@ export default function ImagesPage(){
     }
     const classes = useStyles();
     return (
+
         <div>
+            <Query query={STOCKPHOTO_QUERY}>
+                {
+                    ({loading, error, data}) => {
+                        if (loading) return <p>Loading</p>;
+                        if (error) return <p>Error</p>;
+                        const dataToRender = data.stockphotos;
+                        console.log(data);
+                        return (
+                            <div>
+                                {/* <p>{data.stockphotos[0].title}</p> */}
+                                <Container maxWidth="md" className={classes.imageGallery}>
+                                    <Grid container spacing={5}>
+                                        {dataToRender.map(photo => (
+                                            <Grid key={photo._id} item xs={12} sm={6} md={4}>
+                                                <ImageCard imageLink={'http://localhost:1337' + photo.image.url} title={photo.title} handleClick={setDialogOpen}/>  
+
+                                                                    
+                                            </Grid>
+                                        ))}                                       
+                                    </Grid>
+                                </Container>                                 
+                            </div>
+                        )
+                    }
+                }
+            </Query>
             <ImageDialog2 onClose={handleClose} open={Boolean(dialogOpen)}/>
 
-            <Container maxWidth="md" className={classes.imageGallery}>
+            {/* <Container maxWidth="md" className={classes.imageGallery}>
                 <Grid container spacing={5}>
                     {images2.map(image => (
                         <Grid key={image.id} item xs={12} sm={6} md={4}>
@@ -115,7 +157,7 @@ export default function ImagesPage(){
                         </Grid>
                     ))}                                       
                 </Grid>
-            </Container>    
+            </Container>     */}
         </div>
        
     )

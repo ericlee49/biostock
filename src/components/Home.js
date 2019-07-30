@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
             }
         }
     },  
-    imageGallery: {
+    categoryButtonContainer: {
         paddingTop: 40,
         paddingBottom: 40,       
         backgroundColor: "red",
@@ -94,7 +94,7 @@ function CategoryButtonsGrid(){
     const classes=useStyles();
     const imageCategories = categories
     return (
-        <Container maxWidth="md" className={classes.imageGallery}>
+        <Container maxWidth="md" className={classes.categoryButtonContainer}>
             <Grid className={classes.g2} container spacing={1} justify="center">
                 {imageCategories.map(value => (
                     <Grid key={value} item>
