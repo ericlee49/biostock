@@ -40,3 +40,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### Fonts:
 Currently using typeface-signika.  Installed through npm.  Visit [https://www.npmjs.com/package/typeface-signika](https://www.npmjs.com/package/typeface-signika) for details.  Also to play with the font, checkout: [Google Fonts](https://fonts.google.com/specimen/Signika).
 
+### GraphQL:
+Using the following packages:
+- *apollo-boost*: Package for setting up apollo client: a library that leverages the power of a GraphQL.
+    - contains ApolloClient: establishes a connection to the GraphQL endpoint
+- *react-apollo*: View layer integration for React
+    - contains the ApolloProvider component that assists in attaching the instance of ApolloClient to the React app.
+    - contains the Query component used to request data
+- *graphql-tag*: Necessary package to help parse GraphQL queries
+- *graphql*: Used to prase GraphQL queries
