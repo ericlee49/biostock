@@ -5,6 +5,7 @@ import ImagesPage from './components/ImagesPage';
 import Home from './components/Home';
 import Requests from './components/Requests';
 import About from './components/About';
+import Soon from './components/Soon';
 import {Route, Switch} from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from "react-apollo";
@@ -25,6 +26,7 @@ class App extends React.Component {
           <Route exact path='/requests' component={Requests}/>
           <Route exact path='/immunology' component={ImagesPage}/>
           <Route exact path='/about' component={About}/>
+          <Route exact path='/soon' component={Soon}/>
         </Switch>
 
         {/* <ImagesPage/> */}

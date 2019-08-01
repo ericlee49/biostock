@@ -75,8 +75,8 @@ class AppMenu extends React.Component {
                     {/* <Link className={classes.toolbarLink}>Tutorials</Link>
                     <Link href='/requests' className={classes.toolbarLink}>Requests</Link>
                     <Link className={classes.toolbarLink}>About</Link>  */}
-                    <NavLink to='/' className={classes.toolbarLink}>Tutorials </NavLink>
-                    <NavLink to='/' className={classes.toolbarLink}>About </NavLink>
+                    <NavLink to='/soon' className={classes.toolbarLink}>Tutorials </NavLink>
+                    <NavLink to='/soon' className={classes.toolbarLink}>About </NavLink>
                     <NavLink to='/requests' className={classes.toolbarLink}>Requests </NavLink>
                 </nav>
                 <TextField
