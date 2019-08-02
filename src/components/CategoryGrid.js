@@ -103,13 +103,10 @@ function handleStringToPath(title) {
     return path;
 }
 
-// Temporary Data:
-const categories = ["Immunology","Microbiology","Cell Biology","Molecular Biology","Hosts and Model Organisms","Labware"];
-
 //Stateless functional component: Categories Button Grid Component:
 export default function CategoryGrid(){
     const classes=useStyles();
-    const imageCategories = categories
+    // const imageCategories = ["Immunology","Microbiology","Cell Biology","Molecular Biology","Hosts and Model Organisms","Labware"];
     return (
         <Container maxWidth="md" className={classes.mainContainer}>
             <Query query={CATEGORY_QUERY}>
