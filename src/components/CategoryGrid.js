@@ -119,13 +119,13 @@ export default function CategoryGrid(){
                                         focusRipple
                                         className={classes.categoryButton}
                                         component={React.forwardRef((props, ref) => (
-                                        <Link innerRef={ref} to={"/" + handleStringToPath(category.title)} {...props} />))}
+                                        <Link innerRef={ref} to={"/images/" + handleStringToPath(category.title)} {...props} />))}
                                     >
                                         <span className={classes.imageSrcWrapper}>
                                             <span 
                                                 className={classes.imageSrc}
                                                 style={{
-                                                    backgroundImage: `url( ${ 'http://localhost:1337' + category.background.url} )`
+                                                    backgroundImage: `url( ${'http://localhost:1337' + category.background.url} )`
                                                 }}
                                             />
                                         </span>

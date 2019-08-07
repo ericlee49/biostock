@@ -14,6 +14,8 @@ import ImageDialog2 from './ImageDialog';
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
 
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+
 import 'typeface-signika';
 
 // GraphQL query:
@@ -28,6 +30,34 @@ const STOCKPHOTO_QUERY = gql `
         }
     }
 `;
+
+const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
+    query Photos($category: String!) {
+        categories(where:{title_contains: $category}) {
+            stockphotos {
+                _id
+                title
+                image {
+                    url
+                }
+            }
+        }
+    }
+`
+
+const GET_STOCKPHOTOS_WITH_CATEGORY_2 = gql `
+{
+        categories(where:{title_contains: "immunology"}) {
+            stockphotos {
+                _id
+                title
+                image {
+                    url
+                }
+            }
+        }
+    }
+`
 
 
 // Styles:
@@ -110,7 +140,7 @@ function ImageCard(props) {
 }
 
 
-export default function ImagesPage(){
+export default function ImagesPage(props){
     // IMAGES PAGE COMPONENT STATE:
     const [dialogOpen, setDialogOpen] = React.useState(false);
     // const categories = ["Immunology","Microbiology","Cell Biology","Molecular Biology","Hosts and Model Organisms","Labware"];
@@ -123,23 +153,28 @@ export default function ImagesPage(){
         setDialogOpen(false);
     }
     const classes = useStyles();
+
+    const pageCategory = props.match.params.category;
     return (
 
         <div>
             <Container maxWidth='lg'>
                 <Typography variant="h3" align="center" color="textPrimary" gutterBottom className={classes.title}>
                     <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>
-                        Immunology
+                        {pageCategory.charAt(0).toUpperCase() + pageCategory.slice(1)}
                     </Box>
                 </Typography>
             </Container>            
-            <Query query={STOCKPHOTO_QUERY}>
+            <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{category: `${props.match.params.category}`}}>
                 {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;
                         if (error) return <p>Error</p>;
-                        const dataToRender = data.stockphotos;
+                        const dataToRender = data.categories[0].stockphotos;
                         console.log(data);
+                        // console.log(data.categories[0].stockphotos);
+                        // console.log(dataToRender)
+
                         return (
                             <div>
                                 {/* <p>{data.stockphotos[0].title}</p> */}
@@ -159,6 +194,9 @@ export default function ImagesPage(){
                     }
                 }
             </Query>
+
+
+            
             <ImageDialog2 onClose={handleClose} open={Boolean(dialogOpen)}/>
 
             {/* <Container maxWidth="md" className={classes.imageGallery}>
