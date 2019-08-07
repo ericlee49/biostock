@@ -28,7 +28,7 @@ const styles = theme => ({
         // display: 'flex',
         // justifyContent: 'flex-end',
         overflowX: 'auto',
-        backgroundColor: '#bdcafc'
+        backgroundColor: '#bac8de'
     },
     toolbarLink: {
         //spacing(top, sides)

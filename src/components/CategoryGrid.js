@@ -32,11 +32,8 @@ const useStyles = makeStyles(theme => ({
     mainContainer: {
         paddingTop: 40,
         paddingBottom: 40,       
-        backgroundColor: "red",
     },
-    gridContainer: {
-        backgroundColor: "purple",
-    },    
+
     categoryButton: {
         height: 160,
         width: 290,
@@ -63,7 +60,6 @@ const useStyles = makeStyles(theme => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
         borderRadius: '6px',
-        // backgroundImage: "url(https://source.unsplash.com/random)",
     },
     imageSrcWrapper: {
         position: 'absolute',
@@ -74,9 +70,9 @@ const useStyles = makeStyles(theme => ({
         backgroundSize: 'cover',
         borderRadius: '6px',
         backgroundColor: 'blue',
-        border: '1px solid white',
+        border: '4px solid white',
         overflow: 'hidden',
-        // backgroundImage: "url(https://source.unsplash.com/random)",
+
     },
     buttonTitle: {
         position: 'relative',
@@ -116,7 +112,7 @@ export default function CategoryGrid(){
                         if (error) return <p>Error</p>;
                         const categoriesToRender = data.categories;
                         return (
-                            <Grid className={classes.gridContainer} container spacing={1} justify="center">
+                            <Grid container spacing={1} justify="center">
                             {categoriesToRender.map(category => (
                                 <Grid key={category._id} item>
                                     <ButtonBase
