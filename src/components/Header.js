@@ -9,11 +9,6 @@ import 'typeface-signika';
 // import {ReactComponent as Logo} from '../assets/transmembrane_protein.svg'
 import {ReactComponent as Logo} from '../assets/logo1.svg'
 
-import { FormHelperText } from '@material-ui/core';
-{/* <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" /> */}
-
-
-
 const useStyles = makeStyles(theme => ({
     header: {
         backgroundColor: '#bac8de',
@@ -36,6 +31,9 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center', // center items vertically
         // backgroundColor: 'orange',
+    },
+    title: {
+        paddingTop: '10px',
     }
 }));
 

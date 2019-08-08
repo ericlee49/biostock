@@ -33,10 +33,10 @@ export default function BioStockFooter() {
         <footer className={classes.footer}>
             <Container maxWidth='lg'>
                 <Grid container>
-                    <Grid item xs={9}>
+                    <Grid item xs={12} md={9}>
                         <img src={logo} className={classes.ubc_logo} alt="logo"/>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={12} md={3}>
                         <Typography variant="body2" gutterBottom className={classes.contactInfo}>
                             Microbiology & Immunology <br></br>Faculty of Science
                         </Typography>
