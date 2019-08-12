@@ -34,7 +34,7 @@ class App extends React.Component {
           <Route path='/gallery/:category' component={Gallery}/>
           <Route exact path='/about' component={About}/>
           <Route exact path='/soon' component={Soon}/>
-          <Route path='/img' component={ImageSoloPage}/>
+          <Route path='/img/:id' component={ImageSoloPage}/>
         </Switch>
 
         {/* <ImagesPage/> */}

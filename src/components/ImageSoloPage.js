@@ -2,14 +2,16 @@ import React from 'react';
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import {makeStyles} from '@material-ui/styles';
+
 
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
 
-
+//GraphQL query:
 const GET_IMAGE = gql `
-    query Image($id: ID!) {
-        stockphoto(id: "5d3f40db42ee092510093969") {
+ query Photo($imageId: ID!){
+        stockphoto(id: $imageId) {
             title
             image {
                 url
@@ -18,14 +20,27 @@ const GET_IMAGE = gql `
     }
 `;
 
+// MaterialUI Hook API styles
+const useStyles = makeStyles(theme => ({
+    mainContainer: {
+        backgroundColor: "green",
+    },
+    stockPhoto: {
+        display: "flex",
+        alignItems: "center",
+        maxWidth: "100%",
+    }
+}));
+
 export default function ImageSoloPage(props){
     //params match from router:
+    const classes = useStyles();
     const imageId = props.match.params.id
 
     return (
-        <div>
-            <Container maxWidth="lg">
-            <Query query={GET_IMAGE} variables = {{id: `${ImageBitmapRenderingContext}`}}>
+
+            <Container maxWidth="md" className={classes.mainContainer}>
+            <Query query={GET_IMAGE} variables={{imageId: imageId}}>
                 {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;
@@ -33,14 +48,16 @@ export default function ImageSoloPage(props){
                         console.log(data);
                         return (
                             <div>
-                                Hello    
+<Typography variant="h3">{data.stockphoto.title}</Typography>
+                            <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.stockPhoto}></img>
                             </div>
+                            
                         )
                     
                     }    
                 }
             </Query>
+            <p>Hello World</p>
             </Container>
-        </div>
     )
 }
