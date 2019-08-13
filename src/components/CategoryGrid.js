@@ -20,6 +20,7 @@ const CATEGORY_QUERY = gql `
         categories {
             _id
             title
+            path
             background {
                 url
             }
@@ -93,11 +94,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function handleStringToPath(title) {
-    var path = title.toLowerCase();
-    path = path.replace(/\s+/g, '');
-    return path;
-}
+// function handleStringToPath(title) {
+//     var path = title.toLowerCase();
+//     path = path.replace(/\s+/g, '');
+//     return path;
+// }
 
 //Stateless functional component: Categories Button Grid Component:
 export default function CategoryGrid(){
@@ -119,7 +120,7 @@ export default function CategoryGrid(){
                                         focusRipple
                                         className={classes.categoryButton}
                                         component={React.forwardRef((props, ref) => (
-                                        <Link innerRef={ref} to={"/images/" + handleStringToPath(category.title)} {...props} />))}
+                                        <Link innerRef={ref} to={"/images/" + category.path} {...props} />))}
                                     >
                                         <span className={classes.imageSrcWrapper}>
                                             <span 

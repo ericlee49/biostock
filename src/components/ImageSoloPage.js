@@ -39,7 +39,7 @@ export default function ImageSoloPage(props){
 
     return (
 
-            <Container maxWidth="md" className={classes.mainContainer}>
+            <Container maxWidth="sm" className={classes.mainContainer}>
             <Query query={GET_IMAGE} variables={{imageId: imageId}}>
                 {
                     ({loading, error, data}) => {

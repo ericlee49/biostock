@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import { createBrowserHistory } from "history";
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
+
 ReactDOM.render((
     <BrowserRouter>
-        <App />
+    {/* <Switch>
+        <Route path="/" component={App} />
+    </Switch> */}
+        <App/>
     </BrowserRouter>
 ), document.getElementById('root'));
 

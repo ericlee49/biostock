@@ -9,16 +9,37 @@ import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box'
 
+//import Link from '@material-ui/core/Link'
+
 import ImageDialog2 from './ImageDialog';
+
+
 
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
 
+// import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {Link as RouterLink} from 'react-router-dom';
+
 import 'typeface-signika';
+
+// GraphQL query:
+// const STOCKPHOTO_QUERY = gql `
+//     {
+//         stockphotos {
+//             _id
+//             title
+//             image {
+//                 url
+//             }
+//         }
+//     }
+// `;
 
 const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
     query Photos($category: String!) {
-        categories(where:{title_contains: $category}) {
+        categories(where:{path_contains: $category}) {
+            title
             stockphotos {
                 _id
                 title
@@ -29,6 +50,7 @@ const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
         }
     }
 `
+
 
 // Styles:
 const useStyles = makeStyles(theme => ({
@@ -98,6 +120,7 @@ function ImageCard(props) {
 export default function Gallery(props){
     // IMAGES PAGE COMPONENT STATE:
     const [dialogOpen, setDialogOpen] = React.useState(false);
+    // const categories = ["Immunology","Microbiology","Cell Biology","Molecular Biology","Hosts and Model Organisms","Labware"];
 
     // function handleClickOpen() {
     //     setDialogOpen(true);
@@ -108,34 +131,54 @@ export default function Gallery(props){
     }
     const classes = useStyles();
 
-    const pageCategory = props.match.params.category;
-
     let {location} = props;
     console.log('LOCATION:')
     console.log(location);
+    console.log('PROPS');
+    console.log(props);
     return (
 
         <div>
-            <Container maxWidth='lg'>
-                <Typography variant="h3" align="center" color="textPrimary" gutterBottom className={classes.title}>
-                    <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>
-                        {pageCategory.charAt(0).toUpperCase() + pageCategory.slice(1)}
-                    </Box>
-                </Typography>
-            </Container>            
             <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{category: `${props.match.params.category}`}}>
                 {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;
                         if (error) return <p>Error</p>;
                         const dataToRender = data.categories[0].stockphotos;
+                        console.log(data);
+                        // console.log(data.categories[0].stockphotos);
+                        // console.log(dataToRender)
                         return (
                             <div>
+                                <Container maxWidth='lg'>
+                                    <Typography variant="h3" align="center" color="textPrimary" gutterBottom className={classes.title}>
+                                        <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>
+                                            {data.categories[0].title}
+                                        </Box>
+                                    </Typography>
+                                </Container>                                 
                                 <Container maxWidth="md" className={classes.imageGallery}>
                                     <Grid container spacing={5}>
                                         {dataToRender.map(photo => (
                                             <Grid key={photo._id} item xs={12} sm={6} md={4}>
-                                                <ImageCard imageLink={'http://localhost:1337' + photo.image.url} title={photo.title} handleClick={setDialogOpen}/>  
+                                            {/* <Link component={RouterLink} to='/img/5d3f40db42ee092510093969'> */}
+                                            <RouterLink
+                                                to={{
+                                                    pathname: '/img/5d3f40db42ee092510093969',
+                                                    state: {modal: true}
+                                                }}
+                                            >
+                                            <Card className={classes.imageCard}>
+                                                <CardActionArea>
+                                                    <CardMedia 
+                                                        image={'http://localhost:1337' + photo.image.url}
+                                                        title={photo.title}
+                                                        className={classes.cardMedia}
+                                                    /> 
+                                                </CardActionArea>                           
+                                            </Card>                                             
+                                            </RouterLink>  
+
                                             </Grid>
                                         ))}                                       
                                     </Grid>
@@ -145,11 +188,24 @@ export default function Gallery(props){
                     }
                 }
             </Query>
+
+
+            
             <ImageDialog2 onClose={handleClose} open={Boolean(dialogOpen)}/>
+
+            {/* <Container maxWidth="md" className={classes.imageGallery}>
+                <Grid container spacing={5}>
+                    {images2.map(image => (
+                        <Grid key={image.id} item xs={12} sm={6} md={4}>
+                            <ImageCard imageLink={image.img} title={image.title} handleClick={setDialogOpen}/>  
+
+                                                 
+                        </Grid>
+                    ))}                                       
+                </Grid>
+            </Container>     */}
         </div>
        
     )
 };
-
-
 
