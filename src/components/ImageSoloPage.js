@@ -33,8 +33,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ImageSoloPage(props){
-    //params match from router:
+    
     const classes = useStyles();
+    //params match from router:
     const imageId = props.match.params.id
 
     return (
@@ -48,8 +49,8 @@ export default function ImageSoloPage(props){
                         console.log(data);
                         return (
                             <div>
-<Typography variant="h3">{data.stockphoto.title}</Typography>
-                            <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.stockPhoto}></img>
+                                <Typography variant="h3">{data.stockphoto.title}</Typography>
+                                <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.stockPhoto}></img>
                             </div>
                             
                         )

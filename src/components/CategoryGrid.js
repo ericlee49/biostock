@@ -120,7 +120,7 @@ export default function CategoryGrid(){
                                         focusRipple
                                         className={classes.categoryButton}
                                         component={React.forwardRef((props, ref) => (
-                                        <Link innerRef={ref} to={"/images/" + category.path} {...props} />))}
+                                        <Link innerRef={ref} to={"/gallery/" + category.path} {...props} />))}
                                     >
                                         <span className={classes.imageSrcWrapper}>
                                             <span 

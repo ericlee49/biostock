@@ -9,32 +9,12 @@ import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box'
 
-//import Link from '@material-ui/core/Link'
-
-import ImageDialog2 from './ImageDialog';
-
-
-
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
 
-// import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import {Link as RouterLink} from 'react-router-dom';
 
 import 'typeface-signika';
-
-// GraphQL query:
-// const STOCKPHOTO_QUERY = gql `
-//     {
-//         stockphotos {
-//             _id
-//             title
-//             image {
-//                 url
-//             }
-//         }
-//     }
-// `;
 
 const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
     query Photos($category: String!) {
@@ -96,46 +76,10 @@ const useStyles = makeStyles(theme => ({
     },    
 }));
 
-// Stateless functional component: Image Card:
-function ImageCard(props) {
-    const classes = useStyles();
-    const {imageLink, title, handleClick} = props;
-    return (
-        
-        <Card className={classes.imageCard}>
-            <CardActionArea
-                onClick={handleClick}
-            >
-                <CardMedia 
-                    image={imageLink}
-                    title={title}
-                    className={classes.cardMedia}
-                />
-            </CardActionArea>                            
-        </Card>         
-    );
-}
-
 
 export default function Gallery(props){
     // IMAGES PAGE COMPONENT STATE:
-    const [dialogOpen, setDialogOpen] = React.useState(false);
-    // const categories = ["Immunology","Microbiology","Cell Biology","Molecular Biology","Hosts and Model Organisms","Labware"];
-
-    // function handleClickOpen() {
-    //     setDialogOpen(true);
-    // }
-
-    function handleClose() {
-        setDialogOpen(false);
-    }
     const classes = useStyles();
-
-    let {location} = props;
-    console.log('LOCATION:')
-    console.log(location);
-    console.log('PROPS');
-    console.log(props);
     return (
 
         <div>
@@ -145,9 +89,6 @@ export default function Gallery(props){
                         if (loading) return <p>Loading</p>;
                         if (error) return <p>Error</p>;
                         const dataToRender = data.categories[0].stockphotos;
-                        console.log(data);
-                        // console.log(data.categories[0].stockphotos);
-                        // console.log(dataToRender)
                         return (
                             <div>
                                 <Container maxWidth='lg'>
@@ -164,7 +105,8 @@ export default function Gallery(props){
                                             {/* <Link component={RouterLink} to='/img/5d3f40db42ee092510093969'> */}
                                             <RouterLink
                                                 to={{
-                                                    pathname: '/img/5d3f40db42ee092510093969',
+                                                    // pathname: '/img/5d3f40db42ee092510093969',
+                                                    pathname: `/img/${photo._id}`,
                                                     state: {modal: true}
                                                 }}
                                             >
@@ -188,22 +130,6 @@ export default function Gallery(props){
                     }
                 }
             </Query>
-
-
-            
-            <ImageDialog2 onClose={handleClose} open={Boolean(dialogOpen)}/>
-
-            {/* <Container maxWidth="md" className={classes.imageGallery}>
-                <Grid container spacing={5}>
-                    {images2.map(image => (
-                        <Grid key={image.id} item xs={12} sm={6} md={4}>
-                            <ImageCard imageLink={image.img} title={image.title} handleClick={setDialogOpen}/>  
-
-                                                 
-                        </Grid>
-                    ))}                                       
-                </Grid>
-            </Container>     */}
         </div>
        
     )

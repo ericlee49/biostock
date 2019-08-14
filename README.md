@@ -17,6 +17,12 @@ Using the following packages:
 - *graphql-tag*: Necessary package to help parse GraphQL queries
 - *graphql*: Used to parse GraphQL queries
 
+## React Router:
+The App Component is set inside a route, so we are able to access the component props necessary to complete our custom routing.
+
+- Modal Routes: the modal routes are designed to push a modal to screen when our route is coming from the gallery, when users visit the image alone via url, an image page is rendered instead of the gallery
+
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -12,10 +12,10 @@ import { createBrowserHistory } from "history";
 
 ReactDOM.render((
     <BrowserRouter>
-    {/* <Switch>
+    <Switch>
         <Route path="/" component={App} />
-    </Switch> */}
-        <App/>
+    </Switch>
+        {/* <App/> */}
     </BrowserRouter>
 ), document.getElementById('root'));
 
