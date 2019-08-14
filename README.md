@@ -21,6 +21,8 @@ Using the following packages:
 The App Component is set inside a route, so we are able to access the component props necessary to complete our custom routing.
 
 - Modal Routes: the modal routes are designed to push a modal to screen when our route is coming from the gallery, when users visit the image alone via url, an image page is rendered instead of the gallery
+    - If the modal check comes back false, the ImageSoloPage component is rendered
+    - The modal component has onClose() function that uses the history prop from React Router to go back to the gallery when closed
 
 
 ## Available Scripts
