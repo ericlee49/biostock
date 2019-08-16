@@ -107,11 +107,11 @@ class AppMenu extends React.Component {
                     <NavLink to='/soon' className={classes.toolbarLink}>                    
                         TUTORIALS                      
                     </NavLink>
-                    <NavLink to='/soon' className={classes.toolbarLink}>
+                    <NavLink to='/about' className={classes.toolbarLink}>
                         ABOUT
                     </NavLink>
                     <NavLink to='/requests' className={classes.toolbarLink}>
-                            REQUESTS
+                        REQUESTS
                     </NavLink>                    
                 </nav>
             </Toolbar>            

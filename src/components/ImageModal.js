@@ -104,18 +104,23 @@ export default function ImageModal(props) {
                                         </ListItem>
                                         <ListItem>
                                             <Button color="primary" className={classes.button} variant="outlined">
-                                            <Box fontFamily="Signika">
-                                                PNG Package Download
-                                            </Box>
-                                                
+                                                <Box fontFamily="Signika">
+                                                    PNG Package Download
+                                                </Box>
                                             </Button>                        
                                         </ListItem>
                                         <ListItem>
-                                            <Button color="primary">
-                                            <Box fontFamily="Signika">
-                                                PSD Package Download
-                                            </Box>
-                                                
+                                            <Button color="primary" className={classes.button} variant="outlined">
+                                                <Box fontFamily="Signika">
+                                                    PNG Package Download
+                                                </Box>
+                                            </Button>                        
+                                        </ListItem>                                        
+                                        <ListItem>
+                                            <Button color="primary" className={classes.button} variant="outlined">
+                                                <Box fontFamily="Signika">
+                                                    PSD Package Download
+                                                </Box>
                                             </Button>                        
                                         </ListItem>
                                     </List>                
