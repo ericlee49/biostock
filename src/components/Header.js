@@ -12,7 +12,6 @@ import {ReactComponent as Logo} from '../assets/logo1.svg'
 const useStyles = makeStyles(theme => ({
     header: {
         backgroundColor: '#bac8de',
-        // backgroundColor: 'orange',
         // padding: theme.spacing(2,0,1),
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(8),

@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     imageGallery: {
         paddingTop: 40,
         paddingBottom: 40,       
-        backgroundColor: "orange",
+        // backgroundColor: "orange",
     },
     imageCard: {
         display: 'flex',
@@ -92,7 +92,7 @@ export default function Gallery(props){
                         return (
                             <div>
                                 <Container maxWidth='lg'>
-                                    <Typography variant="h3" align="center" color="textPrimary" gutterBottom className={classes.title}>
+                                    <Typography variant="h3" align="center" gutterBottom className={classes.title}>
                                         <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>
                                             {data.categories[0].title}
                                         </Box>

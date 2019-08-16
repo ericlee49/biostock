@@ -2,11 +2,17 @@ import React from 'react';
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/styles';
+import {makeStyles} from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import SaveIcon from '@material-ui/icons/SaveAlt';
 
 
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
+
+import 'typeface-signika';
 
 //GraphQL query:
 const GET_IMAGE = gql `
@@ -23,12 +29,22 @@ const GET_IMAGE = gql `
 // MaterialUI Hook API styles
 const useStyles = makeStyles(theme => ({
     mainContainer: {
-        backgroundColor: "green",
+        // alignItems: "center",
+        textAlign: "center",
+    },
+    button: {
+        margin: theme.spacing(1),
+        width: "25em",
+    },
+    imageTitle: {
+        paddingTop: "1em",
+        paddingBottom: "0.5em",
     },
     stockPhoto: {
-        display: "flex",
-        alignItems: "center",
         maxWidth: "100%",
+    },
+    rightIcon: {
+        marginLeft: theme.spacing(1),
     }
 }));
 
@@ -40,7 +56,7 @@ export default function ImageSoloPage(props){
 
     return (
 
-            <Container maxWidth="sm" className={classes.mainContainer}>
+            <Container maxWidth="xs" className={classes.mainContainer}>
             <Query query={GET_IMAGE} variables={{imageId: imageId}}>
                 {
                     ({loading, error, data}) => {
@@ -49,16 +65,25 @@ export default function ImageSoloPage(props){
                         console.log(data);
                         return (
                             <div>
-                                <Typography variant="h3">{data.stockphoto.title}</Typography>
+                                <Typography variant="h3" align="center" className={classes.imageTitle}>
+                                    <Box fontFamily="Signika">
+                                    {data.stockphoto.title}
+                                    </Box>
+                                </Typography>
                                 <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.stockPhoto}></img>
-                            </div>
-                            
+                                <Button variant="outlined" color="primary" className={classes.button}>
+                                    PhotoShop Package 
+                                    <SaveIcon className={classes.rightIcon} />
+                                </Button>
+                                <Button variant="outlined" color="primary" className={classes.button}>
+                                    Vector Graphics Package
+                                    <SaveIcon className={classes.rightIcon} />
+                                </Button>                                                
+                            </div>   
                         )
-                    
                     }    
                 }
             </Query>
-            <p>Hello World</p>
             </Container>
     )
 }
