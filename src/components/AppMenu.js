@@ -1,35 +1,178 @@
-import React from 'react';
-import Toolbar from '@material-ui/core/Toolbar';
-// import Link from '@material-ui/core/Link';
-// import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
+// import React from 'react';
+// import Toolbar from '@material-ui/core/Toolbar';
+// // import Link from '@material-ui/core/Link';
+// // import { makeStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
+// import Typography from '@material-ui/core/Typography';
+// import TextField from '@material-ui/core/TextField';
+// import Box from '@material-ui/core/Box';
 
-import { Link, NavLink } from 'react-router-dom';
-import { Container } from '@material-ui/core';
+// import { Link, NavLink } from 'react-router-dom';
+// import { Container } from '@material-ui/core';
 
-// const useStyles = makeStyles(theme => ({
+// // const useStyles = makeStyles(theme => ({
+// //     toolbar: {
+// //     },
+// //     toolbarLink: {
+
+// //     },  
+// //     toolbarTitle: {
+// //     }, 
+// //     searchBar: {
+
+// //     },       
+// // }));
+
+// const styles = theme => ({
 //     toolbar: {
+//         // display: 'flex',
+//         // justifyContent: 'flex-end',
+//         // overflowX: 'auto',
+//         backgroundColor:'orange',
+//         backgroundColor: '#bac8de'
 //     },
 //     toolbarLink: {
-
+//         //spacing(top, sides)
+//         float: "right",
+//         textDecoration: 'none',
+//         padding: theme.spacing(1, 2),
+//         fontFamily: "Signika",
+//         color: "black",
+//         '&:hover': {
+//             color: 'white',
+//             textDecoration: "underline"
+//         },
+//         // flexShrink: 0,
 //     },  
 //     toolbarTitle: {
-//     }, 
+//         flexGrow: 1,
+//         float: "left",
+        
+        
+//     },   
 //     searchBar: {
+//         paddingBottom: theme.spacing(3),
+//     },  
+//     navigation: {
+//         float: "right",
+//         paddingRight: theme.spacing(2),
+//     },
+//     logoLink: {
+//         backgroundColor: 'red',
+//         textDecoration: 'none',
+//         color: 'black',
+//         '&:hover': {
+//             color: 'white',
+//             fontSize: "1.1em"
+//         },
+//     },
+//     redColor: {
+//         backgroundColor: 'red',
+//     }
+// });
 
-//     },       
-// }));
+// class AppMenu extends React.Component {
+//     render() {
+//         const {classes} = this.props;
+//         return (
+//             <div>
+                
+//             <Toolbar className={classes.toolbar}>
+//                 <Typography variant="h6" color="inherit" className={classes.redColor}>
+//                     <Link className={classes.logoLink} to="/">                    
+//                         <Box fontFamily="Signika" fontWeight="500" m={1}>
+//                             BioStock
+//                         </Box>
+//                     </Link> 
+//                 </Typography>
+//                 <nav className={classes.navigation}>
+//                     {/* <Link className={classes.toolbarLink}>Tutorials</Link>
+//                     <Link href='/requests' className={classes.toolbarLink}>Requests</Link>
+//                     <Link className={classes.toolbarLink}>About</Link>  */}
+//                     {/* <NavLink to='/soon' className={classes.toolbarLink}>                    
+//                         <Box fontFamily="Signika" fontWeight="500" >
+//                             TUTORIALS
+//                         </Box> 
+//                     </NavLink>
+//                     <NavLink to='/soon' className={classes.toolbarLink}>
+//                         <Box fontFamily="Signika" fontWeight="500" >
+//                             ABOUT
+//                         </Box>                     
+//                     </NavLink>
+//                     <NavLink to='/requests' className={classes.toolbarLink}>
+//                         <Box fontFamily="Signika" fontWeight="500" >
+//                             REQUESTS
+//                         </Box>    
+//                     </NavLink> */}
+//                     <NavLink to='/soon' className={classes.toolbarLink}>                    
+//                         TUTORIALS                      
+//                     </NavLink>
+//                     <NavLink to='/about' className={classes.toolbarLink}>
+//                         ABOUT
+//                     </NavLink>
+//                     <NavLink to='/requests' className={classes.toolbarLink}>
+//                         REQUESTS
+//                     </NavLink>                    
+//                 </nav>
+//             </Toolbar>          
 
-const styles = theme => ({
-    toolbar: {
-        // display: 'flex',
-        // justifyContent: 'flex-end',
-        // overflowX: 'auto',
-        backgroundColor:'orange',
+//             <div>Hello World Menu</div>  
+
+
+//         </div>            
+//         )
+//     }
+// }
+
+// export default withStyles(styles)(AppMenu)
+
+
+import React from 'react';
+
+import {makeStyles} from '@material-ui/core/styles';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
+
+import { Link, NavLink } from 'react-router-dom';
+
+
+
+const useStyles = makeStyles(theme => ({
+    title: {
+        // backgroundColor: "red",
+    },
+    toolbarStyle: {
         backgroundColor: '#bac8de'
+    },
+    mobileMenuIcon: {
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        }
+    },
+    mobileMenu: {
+        [theme.breakpoints.up('sm')]: {
+            display: 'none',
+        }
+    },
+    desktopNavGroup: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        }
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    navigation: {
+        paddingRight: theme.spacing(2),
     },
     toolbarLink: {
         //spacing(top, sides)
@@ -43,83 +186,103 @@ const styles = theme => ({
             textDecoration: "underline"
         },
         // flexShrink: 0,
-    },  
-    toolbarTitle: {
-        flexGrow: 1,
-        float: "left",
-        
-        
-    },   
-    searchBar: {
-        paddingBottom: theme.spacing(3),
-    },  
-    navigation: {
-        float: "right",
-        paddingRight: theme.spacing(2),
     },
     logoLink: {
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         textDecoration: 'none',
         color: 'black',
         '&:hover': {
             color: 'white',
             fontSize: "1.1em"
         },
-    },
-    redColor: {
-        backgroundColor: 'red',
+    },      
+}))
+
+export default function AppMenu() {
+    const classes = useStyles();
+
+    //STATES:
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+
+
+    const renderMenu = (
+        <Menu
+            open={Boolean(anchorEl)}
+            anchorEl = {anchorEl}
+            anchorOrigin={{vertical:'top', horizontal: 'right'}}
+            onClose={handleClose}
+            className={classes.mobileMenu}
+        >
+            <MenuItem onClick={handleClose}>REQUESTS</MenuItem>
+            <MenuItem onClick={handleClose}>TUTORIALS</MenuItem>
+            <MenuItem onClick={handleClose}>ABOUT</MenuItem>
+        </Menu>
+    );
+
+    function handleClick(event) {
+        setAnchorEl(event.currentTarget);
+        console.log(event);
     }
-});
 
-class AppMenu extends React.Component {
-    render() {
-        const {classes} = this.props;
-        return (
-            <div>
-                
-            <Toolbar className={classes.toolbar}>
-                <Typography variant="h6" color="inherit" className={classes.redColor}>
-                    <Link className={classes.logoLink} to="/">                    
-                        <Box fontFamily="Signika" fontWeight="500" m={1}>
-                            BioStock
-                        </Box>
-                    </Link> 
-                </Typography>
-                <nav className={classes.navigation}>
-                    {/* <Link className={classes.toolbarLink}>Tutorials</Link>
-                    <Link href='/requests' className={classes.toolbarLink}>Requests</Link>
-                    <Link className={classes.toolbarLink}>About</Link>  */}
-                    {/* <NavLink to='/soon' className={classes.toolbarLink}>                    
-                        <Box fontFamily="Signika" fontWeight="500" >
-                            TUTORIALS
-                        </Box> 
-                    </NavLink>
-                    <NavLink to='/soon' className={classes.toolbarLink}>
-                        <Box fontFamily="Signika" fontWeight="500" >
-                            ABOUT
-                        </Box>                     
-                    </NavLink>
-                    <NavLink to='/requests' className={classes.toolbarLink}>
-                        <Box fontFamily="Signika" fontWeight="500" >
-                            REQUESTS
-                        </Box>    
-                    </NavLink> */}
-                    <NavLink to='/soon' className={classes.toolbarLink}>                    
-                        TUTORIALS                      
-                    </NavLink>
-                    <NavLink to='/about' className={classes.toolbarLink}>
-                        ABOUT
-                    </NavLink>
-                    <NavLink to='/requests' className={classes.toolbarLink}>
-                        REQUESTS
-                    </NavLink>                    
-                </nav>
-            </Toolbar>            
-
-
-        </div>            
-        )
+    function handleClose() {
+        setAnchorEl(null);
     }
+
+    return (
+        <div>
+            <AppBar position="static">
+                <Toolbar className={classes.toolbarStyle}>
+                    <Typography className={classes.title} variant="h5" noWrap>
+                        <Link className={classes.logoLink} to="/">                    
+                            <Box fontFamily="Signika" fontWeight="500" m={1}>
+                                BioStock
+                            </Box>
+                        </Link> 
+                    </Typography>
+                    {/* Push the rest of the menu to the right */}
+                    <div className={classes.grow}/>
+                    <div className={classes.desktopNavGroup}>
+                        <nav className={classes.navigation}>
+                     {/* <Link className={classes.toolbarLink}>Tutorials</Link>
+                     <Link href='/requests' className={classes.toolbarLink}>Requests</Link>
+                     <Link className={classes.toolbarLink}>About</Link>  */}
+                     <NavLink to='/soon' className={classes.toolbarLink}>                    
+                         <Box fontFamily="Signika" fontWeight="500" >
+                             TUTORIALS
+                         </Box> 
+                     </NavLink>
+                     <NavLink to='/about' className={classes.toolbarLink}>
+                         <Box fontFamily="Signika" fontWeight="500" >
+                             ABOUT
+                         </Box>                     
+                     </NavLink>
+                     <NavLink to='/requests' className={classes.toolbarLink}>
+                         <Box fontFamily="Signika" fontWeight="500" >
+                             REQUESTS
+                         </Box>    
+                     </NavLink>
+                     {/* <NavLink to='/soon' className={classes.toolbarLink}>                    
+                         TUTORIALS                      
+                     </NavLink>
+                     <NavLink to='/about' className={classes.toolbarLink}>
+                         ABOUT
+                     </NavLink>
+                     <NavLink to='/requests' className={classes.toolbarLink}>
+                         REQUESTS
+                     </NavLink>                     */}
+                 </nav>
+                    </div>
+                    <IconButton 
+                        onClick={handleClick} 
+                        className={classes.mobileMenuIcon}
+                        color="inherit"    
+                    >
+                        <MenuIcon/>
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
+            {renderMenu}
+        </div>
+    )
 }
-
-export default withStyles(styles)(AppMenu)
