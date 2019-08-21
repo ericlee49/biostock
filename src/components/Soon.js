@@ -7,7 +7,8 @@ import {makeStyles} from '@material-ui/styles';
 // MaterialUI Hook API for styles:
 const useStyles = makeStyles(theme => ({
     midSizeContainer : {
-        backgroundColor: "green",
+        // backgroundColor: "green",
+        textAlign: "center",
     }
 }));
 

@@ -12,8 +12,28 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import Box from '@material-ui/core/Box';
 
+import gql from 'graphql-tag';
+import {Mutation} from 'react-apollo';
 
-
+const CREATE_PHOTO_REQUEST = gql `
+    mutation CreatePhotoRequest($firstname: String!, $lastname: String!, $email: String!, $description: String!) {
+        createPhotoRequest(input: {
+            data: {
+                firstname: $firstname,
+                lastname: $lastname,
+                email: $email,
+                description: $description,
+            }
+        }) {
+            photorequest {
+                firstname
+                lastname
+                email
+                description
+            }
+        }
+    }
+`;
 
 // const useStyles = makeStyles(theme => ({
 
