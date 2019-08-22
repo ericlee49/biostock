@@ -24,6 +24,11 @@ The App Component is set inside a route, so we are able to access the component 
     - If the modal check comes back false, the ImageSoloPage component is rendered
     - The modal component has onClose() function that uses the history prop from React Router to go back to the gallery when closed
 
+## Material UI:
+The App is mobile friendly.  We are using Material UI Hook API to implement ```makeStyle``` 
+
+The styles package also includes breakpoints which allow the use of the inline styles to hide and show certain display components based on the app size:
+```[theme.brekpoints.up('sm')]:```
 
 ## Available Scripts
 
