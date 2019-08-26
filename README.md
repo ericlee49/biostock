@@ -24,6 +24,9 @@ The App Component is set inside a route, so we are able to access the component 
     - If the modal check comes back false, the ImageSoloPage component is rendered
     - The modal component has onClose() function that uses the history prop from React Router to go back to the gallery when closed
 
+## React Hooks:
+Custom hook is used for handling form inputs, the return obj provides the value and an event handler.  This can then be associated to each field, which then can be used as the state for the request submission.
+
 ## Material UI:
 The App is mobile friendly.  We are using Material UI Hook API to implement ```makeStyle``` 
 
