@@ -84,13 +84,27 @@ export default function AppMenu() {
             onClose={handleClose}
             className={classes.mobileMenu}
         >
-            <MenuItem onClick={handleClose}>REQUESTS</MenuItem>
-            <MenuItem onClick={handleClose}>ABOUT</MenuItem>
-            <MenuItem onClick={handleClose}>                     <NavLink to='/soon' className={classes.toolbarLink}>                    
-                         <Box fontFamily="Signika" fontWeight="500" >
-                             TUTORIALS
-                         </Box> 
-                     </NavLink></MenuItem>
+            <MenuItem onClick={handleClose}>
+                <NavLink to='/requests' className={classes.toolbarLink}>                    
+                    <Box fontFamily="Signika" fontWeight="500" >
+                        REQUESTS
+                    </Box> 
+                </NavLink>            
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+                 <NavLink to='/about' className={classes.toolbarLink}>                    
+                    <Box fontFamily="Signika" fontWeight="500" >
+                        ABOUT
+                    </Box> 
+                </NavLink>            
+            </MenuItem>
+            <MenuItem onClick={handleClose}>                     
+                <NavLink to='/soon' className={classes.toolbarLink}>                    
+                    <Box fontFamily="Signika" fontWeight="500" >
+                        TUTORIALS
+                    </Box> 
+                </NavLink>
+            </MenuItem>
             
         </Menu>
     );

@@ -18,6 +18,8 @@ import {Mutation} from 'react-apollo';
 import 'typeface-signika';
 
 import {Redirect} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 
 const CREATE_PHOTO_REQUEST = gql `
@@ -71,9 +73,10 @@ function ConfirmationDialog(props) {
                 </DialogContentText>                
             </DialogContent>
             <DialogActions>
-                <Button color="primary" onClick={() => {return <Redirect to="/" />}}>
+                {/* <Button color="primary" onClick={() => {return <Redirect to="/" />}}>
                     OK
-                </Button>
+                </Button> */}
+                <Link to="/about">OK</Link>
             </DialogActions>
         </Dialog>
     )

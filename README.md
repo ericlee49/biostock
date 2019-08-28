@@ -14,8 +14,10 @@ Using the following packages:
 - *react-apollo*: View layer integration for React
     - contains the ApolloProvider component that assists in attaching the instance of ApolloClient to the React app.
     - contains the Query component used to request data
+    - contains the *Mutation* component: used to submit the Requests data to Strapi
 - *graphql-tag*: Necessary package to help parse GraphQL queries
 - *graphql*: Used to parse GraphQL queries
+
 
 ## React Router:
 The App Component is set inside a route, so we are able to access the component props necessary to complete our custom routing.
