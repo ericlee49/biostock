@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/SaveAlt';
 
 
@@ -62,7 +61,6 @@ export default function ImageSoloPage(props){
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;
                         if (error) return <p>Error</p>;
-                        console.log(data);
                         return (
                             <div>
                                 <Typography variant="h3" align="center" className={classes.imageTitle}>
@@ -70,8 +68,8 @@ export default function ImageSoloPage(props){
                                     {data.stockphoto.title}
                                     </Box>
                                 </Typography>
-                                <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.stockPhoto}></img>
-                                <Button variant="outlined" color="primary" className={classes.button}>
+                                <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
+                                <Button variant="outlined" color="primary" className={classes.button} >
                                     PhotoShop Package 
                                     <SaveIcon className={classes.rightIcon} />
                                 </Button>

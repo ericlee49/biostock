@@ -4,7 +4,6 @@ import Dialog from '@material-ui/core/Dialog'
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -89,7 +88,7 @@ export default function ImageModal(props) {
                                         alignItems="center"
                                         className={classes.centerGrid}
                                     >
-                                        <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.centerImage}></img>
+                                        <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.centerImage} alt="StockPhoto"/>
                                     </Grid>
                                 </Grid>
                                 <Grid item xs={12} className={classes.listStyle}>

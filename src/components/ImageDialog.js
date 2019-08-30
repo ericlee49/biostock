@@ -52,7 +52,7 @@ export default function ImageDialog2(props) {
                 alignItems="center"
                 className={classes.centerGrid}
             >
-                <img src={require('../assets/nucleus.png')} className={classes.centerImage}></img>
+                <img src={require('../assets/nucleus.png')} className={classes.centerImage} alt="StockPhoto"></img>
             </Grid>
                 
                 

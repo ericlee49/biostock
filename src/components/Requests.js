@@ -17,7 +17,7 @@ import {Mutation} from 'react-apollo';
 
 import 'typeface-signika';
 
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
@@ -97,7 +97,6 @@ function useFormInput (initialValue) {
 
 export default function Requests() {
     const [confimrationDialogOpen, setConfirmationDialogOpen] = React.useState(false);
-    const testInput = useFormInput('');
 
     //Inputs using custom useFormInput hook
     const firstname = useFormInput('');

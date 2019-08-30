@@ -2,7 +2,6 @@ import React from 'react';
 
 import BioStockFooter from './components/Footer';
 import AppMenu from './components/AppMenu';
-import ImagesPage from './components/ImagesPage';
 import Home from './components/Home';
 import Requests from './components/Requests';
 import About from './components/About';
@@ -11,7 +10,7 @@ import Gallery from './components/Gallery';
 import ImageSoloPage from './components/ImageSoloPage';
 import ImageModal from './components/ImageModal';
 
-import {Route, Switch, Link} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from "react-apollo";
 
