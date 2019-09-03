@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     desktopNavGroup: {
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             display: 'none',
         }
     },
