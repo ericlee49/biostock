@@ -1,3 +1,5 @@
+// Modal that pops up when a stock photo is selected from the Gallery
+
 import React from 'react'
 import {makeStyles} from '@material-ui/core/styles'
 import Dialog from '@material-ui/core/Dialog'

@@ -116,8 +116,9 @@ export default function Requests() {
 
 
     return (
+        <div>
         <Box pt={10}>
-        <Container component="main" maxWidth="sm">
+        <Container  maxWidth="sm">
             <ConfirmationDialog open={confimrationDialogOpen} onClose={handleClose}/>
             <Typography variant="h4">
                 <Box fontFamily="Signika">
@@ -167,11 +168,9 @@ export default function Requests() {
                         label="Description"
                         {...description}
                     /> 
-                    <Typography variant="p">
-                        <Box fontFamily="Signika">
-                        Please Email <a href="mailto:craig.kornak@ubc.ca?Subject=BioStock%20Request" target="_top">Craig</a> if you have any images you wish to send
-                        </Box>
-                    </Typography>
+                    <Box fontFamily="Signika">
+                        <p>Please Email <a href="mailto:craig.kornak@ubc.ca?Subject=BioStock%20Request" target="_top">Craig</a> if you have any images you wish to send</p>
+                    </Box>
                 </Grid>
                 <Mutation
                     mutation={CREATE_PHOTO_REQUEST}
@@ -203,5 +202,6 @@ export default function Requests() {
 
         </Container>
         </Box>
+        </div>
     )
 }

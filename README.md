@@ -34,7 +34,7 @@ The App is mobile friendly.  We are using Material UI Hook API to implement ```m
 
 The styles package also includes breakpoints which allow the use of the inline styles to hide and show certain display components based on the app size:
 ```[theme.brekpoints.up('sm')]:```
-
+```[theme.brekpoints.down('sm')]:```
 ## Available Scripts
 
 In the project directory, you can run:
