@@ -7,6 +7,8 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/SaveAlt';
 
+import {strapiHost} from './HostDetails';
+
 
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
@@ -68,7 +70,7 @@ export default function ImageSoloPage(props){
                                     {data.stockphoto.title}
                                     </Box>
                                 </Typography>
-                                <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
+                                <img src={strapiHost + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
                                 <Button variant="outlined" color="primary" className={classes.button} >
                                     PhotoShop Package 
                                     <SaveIcon className={classes.rightIcon} />
