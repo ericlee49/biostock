@@ -23,6 +23,9 @@ const GET_IMAGE = gql `
             image {
                 url
             }
+            vectorGraphicPackage {
+                url
+            }
         }
     }
 `;
@@ -75,10 +78,14 @@ export default function ImageSoloPage(props){
                                     PhotoShop Package 
                                     <SaveIcon className={classes.rightIcon} />
                                 </Button>
-                                <Button variant="outlined" color="primary" className={classes.button}>
-                                    Vector Graphics Package
-                                    <SaveIcon className={classes.rightIcon} />
-                                </Button>                                                
+                               
+                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url}>
+                                    <Button variant="outlined" color="primary" className={classes.button}>
+                                        Vector Graphic Package
+                                        <SaveIcon className={classes.rightIcon} />
+                                        </Button>   
+                                    </a>
+                                                                             
                             </div>   
                         )
                     }    
