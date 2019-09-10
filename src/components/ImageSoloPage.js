@@ -49,6 +49,9 @@ const useStyles = makeStyles(theme => ({
     },
     rightIcon: {
         marginLeft: theme.spacing(1),
+    },
+    downloadLink: {
+        textDecoration: "none",
     }
 }));
 
@@ -66,6 +69,7 @@ export default function ImageSoloPage(props){
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;
                         if (error) return <p>Error</p>;
+                        console.log(data);
                         return (
                             <div>
                                 <Typography variant="h3" align="center" className={classes.imageTitle}>
@@ -78,14 +82,27 @@ export default function ImageSoloPage(props){
                                     PhotoShop Package 
                                     <SaveIcon className={classes.rightIcon} />
                                 </Button>
-                               
-                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url}>
+                                {/* <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url}> */}
                                     <Button variant="outlined" color="primary" className={classes.button}>
                                         Vector Graphic Package
                                         <SaveIcon className={classes.rightIcon} />
-                                        </Button>   
-                                    </a>
-                                                                             
+                                    </Button>   
+                                {/* </a> */}
+                                {/* <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink}> */}
+                                    <Button variant="outlined" color="primary" className={classes.button}>
+                                        PNG Package
+                                        <SaveIcon className={classes.rightIcon} />
+                                    </Button>   
+                                {/* </a> */}
+                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                    <Button variant="outlined" color="primary" className={classes.button}>
+                                        Vector Graphics Package
+                                        <SaveIcon className={classes.rightIcon} />
+                                    </Button>  
+                                </a>
+
+                                <p>{strapiHost + data.stockphoto.vectorGraphicPackage.url}</p>
+
                             </div>   
                         )
                     }    
