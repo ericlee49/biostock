@@ -78,30 +78,18 @@ export default function ImageSoloPage(props){
                                     </Box>
                                 </Typography>
                                 <img src={strapiHost + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
-                                <Button variant="outlined" color="primary" className={classes.button} >
-                                    PhotoShop Package 
-                                    <SaveIcon className={classes.rightIcon} />
-                                </Button>
-                                {/* <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url}> */}
-                                    <Button variant="outlined" color="primary" className={classes.button}>
-                                        Vector Graphic Package
+                                    <Button variant="outlined" color="primary" className={classes.button} >
+                                        PhotoShop Package 
                                         <SaveIcon className={classes.rightIcon} />
-                                    </Button>   
-                                {/* </a> */}
-                                {/* <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink}> */}
-                                    <Button variant="outlined" color="primary" className={classes.button}>
-                                        PNG Package
-                                        <SaveIcon className={classes.rightIcon} />
-                                    </Button>   
-                                {/* </a> */}
+                                    </Button>
+                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available vector package </p> : (
                                 <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                     <Button variant="outlined" color="primary" className={classes.button}>
                                         Vector Graphics Package
                                         <SaveIcon className={classes.rightIcon} />
                                     </Button>  
-                                </a>
-
-                                <p>{strapiHost + data.stockphoto.vectorGraphicPackage.url}</p>
+                                </a>                                    
+                                )}
 
                             </div>   
                         )
