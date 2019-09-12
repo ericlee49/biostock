@@ -52,6 +52,9 @@ const useStyles = makeStyles(theme => ({
     },
     downloadLink: {
         textDecoration: "none",
+    },
+    stockPhotoDiv: {
+        marginBottom: theme.spacing(8),
     }
 }));
 
@@ -71,24 +74,36 @@ export default function ImageSoloPage(props){
                         if (error) return <p>Error</p>;
                         console.log(data);
                         return (
-                            <div>
+                            <div className={classes.stockPhotoDiv}>
                                 <Typography variant="h3" align="center" className={classes.imageTitle}>
                                     <Box fontFamily="Signika">
                                     {data.stockphoto.title}
                                     </Box>
                                 </Typography>
                                 <img src={strapiHost + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
-                                    <Button variant="outlined" color="primary" className={classes.button} >
-                                        PhotoShop Package 
-                                        <SaveIcon className={classes.rightIcon} />
-                                    </Button>
                                 { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available vector package </p> : (
-                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
-                                    <Button variant="outlined" color="primary" className={classes.button}>
-                                        Vector Graphics Package
-                                        <SaveIcon className={classes.rightIcon} />
-                                    </Button>  
-                                </a>                                    
+                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                        <Button variant="outlined" color="primary" className={classes.button}>
+                                            Photoshop Package
+                                            <SaveIcon className={classes.rightIcon} />
+                                        </Button>  
+                                    </a>                                    
+                                )}
+                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available vector package </p> : (
+                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                        <Button variant="outlined" color="primary" className={classes.button}>
+                                            PNG Package
+                                            <SaveIcon className={classes.rightIcon} />
+                                        </Button>  
+                                    </a>                                    
+                                )}
+                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available vector package </p> : (
+                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                        <Button variant="outlined" color="primary" className={classes.button}>
+                                            Vector Graphics Package
+                                            <SaveIcon className={classes.rightIcon} />
+                                        </Button>  
+                                    </a>                                    
                                 )}
 
                             </div>   
