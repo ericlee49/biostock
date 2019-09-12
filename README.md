@@ -32,7 +32,7 @@ Custom hook is used for handling form inputs, the return obj provides the value 
 ## Material UI:
 The App is mobile friendly.  We are using Material UI Hook API to implement ```makeStyle``` 
 
-The styles package also includes breakpoints which allow the use of the inline styles to hide and show certain display components based on the app size:
+The styles package also includes breakpoints which allow the use of the inline styles to hide and show certain display components based on the app size.  Breakpoints is currently being used on the web application menu:
 ```[theme.brekpoints.up('sm')]:```
 ```[theme.brekpoints.down('sm')]:```
 ## Available Scripts
