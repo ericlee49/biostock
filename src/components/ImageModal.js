@@ -16,6 +16,8 @@ import gql from 'graphql-tag';
 
 import 'typeface-signika';
 
+import {strapiHost} from './HostDetails';
+
 //GraphQL query:
 const GET_IMAGE = gql `
  query Photo($imageId: ID!){
@@ -108,7 +110,17 @@ export default function ImageModal(props) {
                                                 <Box fontFamily="Signika">
                                                     PNG Package Download
                                                 </Box>
-                                            </Button>                        
+                                            </Button>
+                                            { (data.stockphoto.vectorGraphicPackage === undefined) ? <p>no package</p> : (
+                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} download>
+                                                    <Button variant="outlined" color="primary" className={classes.button}>
+                                                        Photoshop Package
+                                                        {/* <SaveIcon className={classes.rightIcon} /> */}
+                                                    </Button>  
+                                                </a> 
+                                            )
+       
+                                            }                                                                    
                                         </ListItem>
                                         <ListItem>
                                             <Button color="primary" className={classes.button} variant="outlined">
