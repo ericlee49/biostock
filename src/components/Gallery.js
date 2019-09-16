@@ -33,34 +33,7 @@ const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
 
 
 // Styles:
-const useStyles = makeStyles(theme => ({
-    categoryButton: {
-        height: 160,
-        width: 290,
-        // backgroundColor: "green"
-        '&:hover': {
-            // zIndex:1,
-            '& $imageBackdrop': {
-                opacity: 0.15,
-            },
-            '& $buttonTitle': {
-                transform: 'scale(1.1)',
-                transition: 'all 0.8s ease',
-            },
-            '& $imageSrc': {
-                transform: 'scale(1.1)',
-                transition: 'all 0.8s ease',
-                
-
-            }
-        }
-    },
-    categoryContainer: {
-        backgroundColor: "blue",
-    },    
-    categoryGrid: {
-        backgroundColor: "green",
-    },    
+const useStyles = makeStyles(theme => ({ 
     imageGallery: {
         paddingTop: 40,
         paddingBottom: 40,       
@@ -74,6 +47,9 @@ const useStyles = makeStyles(theme => ({
         // paddingTop: '56.25%', // 16:9
         paddingTop: '100%', //1:1
     },    
+    title: {
+        marginTop: '1em',
+    }
 }));
 
 

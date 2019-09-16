@@ -26,6 +26,9 @@ const GET_IMAGE = gql `
             image {
                 url
             }
+            vectorGraphicPackage {
+                url
+            }
         }
     }
 `;
@@ -50,6 +53,10 @@ const useStyles = makeStyles(theme => ({
     },
     button: {
         margin: theme.spacing(1),
+        width: '20em'
+    },
+    downloadLink: {
+        textDecoration: 'none',
     }
 
 }));
@@ -83,6 +90,8 @@ export default function ImageModal(props) {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading...</p>
                         if (error) return <p>Error!</p>
+                        console.log("HERE IS DATA");
+                        console.log(data);
                         return (
                             <Grid  container>
                                 <Grid item xs={12}>
@@ -92,7 +101,7 @@ export default function ImageModal(props) {
                                         alignItems="center"
                                         className={classes.centerGrid}
                                     >
-                                        <img src={"http://localhost:1337" + data.stockphoto.image.url} className={classes.centerImage} alt="StockPhoto"/>
+                                        <img src={strapiHost + data.stockphoto.image.url} className={classes.centerImage} alt="StockPhoto"/>
                                     </Grid>
                                 </Grid>
                                 <Grid item xs={12} className={classes.listStyle}>
@@ -106,35 +115,40 @@ export default function ImageModal(props) {
                                             </Typography>
                                         </ListItem>
                                         <ListItem>
-                                            <Button color="primary" className={classes.button} variant="outlined">
-                                                <Box fontFamily="Signika">
-                                                    PNG Package Download
-                                                </Box>
-                                            </Button>
-                                            { (data.stockphoto.vectorGraphicPackage === undefined) ? <p>no package</p> : (
-                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} download>
+                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop package available</p> : (
+                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                                     <Button variant="outlined" color="primary" className={classes.button}>
-                                                        Photoshop Package
-                                                        {/* <SaveIcon className={classes.rightIcon} /> */}
+                                                        <Box fontFamily="Signika">
+                                                            Photoshop Package
+                                                        </Box>
                                                     </Button>  
                                                 </a> 
-                                            )
-       
+                                                )
                                             }                                                                    
                                         </ListItem>
                                         <ListItem>
-                                            <Button color="primary" className={classes.button} variant="outlined">
-                                                <Box fontFamily="Signika">
-                                                    PNG Package Download
-                                                </Box>
-                                            </Button>                        
+                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop package available</p> : (
+                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                                    <Button variant="outlined" color="primary" className={classes.button}>
+                                                        <Box fontFamily="Signika">
+                                                            PNG Package Download
+                                                        </Box>
+                                                    </Button>  
+                                                </a> 
+                                                )
+                                            }                         
                                         </ListItem>                                        
                                         <ListItem>
-                                            <Button color="primary" className={classes.button} variant="outlined">
-                                                <Box fontFamily="Signika">
-                                                    PSD Package Download
-                                                </Box>
-                                            </Button>                        
+                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop package available</p> : (
+                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                                    <Button variant="outlined" color="primary" className={classes.button}>
+                                                        <Box fontFamily="Signika">
+                                                            Vector Package Download
+                                                        </Box>
+                                                    </Button>  
+                                                </a> 
+                                                )
+                                            }                         
                                         </ListItem>
                                     </List>                
                                 </Grid>
