@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/SaveAlt';
 
-import {strapiHost} from './HostDetails';
+import {bioStockHost} from './HostDetails';
 
 
 import {Query} from 'react-apollo';
@@ -80,17 +80,17 @@ export default function ImageSoloPage(props){
                                     {data.stockphoto.title}
                                     </Box>
                                 </Typography>
-                                <img src={strapiHost + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
-                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available vector package </p> : (
-                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                <img src={bioStockHost + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
+                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available Photoshop package </p> : (
+                                    <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                         <Button variant="outlined" color="primary" className={classes.button}>
                                             Photoshop Package
                                             <SaveIcon className={classes.rightIcon} />
                                         </Button>  
                                     </a>                                    
                                 )}
-                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available vector package </p> : (
-                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available PNG package </p> : (
+                                    <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                         <Button variant="outlined" color="primary" className={classes.button}>
                                             PNG Package
                                             <SaveIcon className={classes.rightIcon} />
@@ -98,7 +98,7 @@ export default function ImageSoloPage(props){
                                     </a>                                    
                                 )}
                                 { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available vector package </p> : (
-                                    <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                    <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                         <Button variant="outlined" color="primary" className={classes.button}>
                                             Vector Graphics Package
                                             <SaveIcon className={classes.rightIcon} />

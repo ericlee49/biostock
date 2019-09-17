@@ -14,6 +14,8 @@ import gql from 'graphql-tag';
 
 import 'typeface-signika';
 
+import {bioStockHost} from './HostDetails';
+
 // GraphQL query:
 const CATEGORY_QUERY = gql `
     {
@@ -70,7 +72,7 @@ const useStyles = makeStyles(theme => ({
         bottom: 0,
         backgroundSize: 'cover',
         borderRadius: '6px',
-        backgroundColor: 'blue',
+        backgroundColor: 'grey',
         border: '4px solid white',
         overflow: 'hidden',
 
@@ -123,12 +125,21 @@ export default function CategoryGrid(){
                                         <Link innerRef={ref} to={"/gallery/" + category.path} {...props} />))}
                                     >
                                         <span className={classes.imageSrcWrapper}>
-                                            <span 
-                                                className={classes.imageSrc}
-                                                style={{
-                                                    backgroundImage: `url( ${'http://localhost:1337' + category.background.url} )`
-                                                }}
-                                            />
+
+                                            {(category.background === null) ? 
+                                            (                                            
+                                                <span 
+                                                    className={classes.imageSrc}
+                                                />
+                                            ) : (
+                                                <span 
+                                                    className={classes.imageSrc}
+                                                    style={{
+                                                        backgroundImage: `url( ${bioStockHost + category.background.url} )`
+                                                    }}
+                                                />                                   
+                                            )}
+
                                         </span>
              
                                         <span className={classes.imageBackdrop}/>

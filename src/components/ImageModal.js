@@ -16,7 +16,7 @@ import gql from 'graphql-tag';
 
 import 'typeface-signika';
 
-import {strapiHost} from './HostDetails';
+import {bioStockHost, strapiHost} from './HostDetails';
 
 //GraphQL query:
 const GET_IMAGE = gql `
@@ -101,7 +101,7 @@ export default function ImageModal(props) {
                                         alignItems="center"
                                         className={classes.centerGrid}
                                     >
-                                        <img src={strapiHost + data.stockphoto.image.url} className={classes.centerImage} alt="StockPhoto"/>
+                                        <img src={bioStockHost + data.stockphoto.image.url} className={classes.centerImage} alt="StockPhoto"/>
                                     </Grid>
                                 </Grid>
                                 <Grid item xs={12} className={classes.listStyle}>
@@ -115,8 +115,8 @@ export default function ImageModal(props) {
                                             </Typography>
                                         </ListItem>
                                         <ListItem>
-                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop package available</p> : (
-                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop Package available</p> : (
+                                                <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                                     <Button variant="outlined" color="primary" className={classes.button}>
                                                         <Box fontFamily="Signika">
                                                             Photoshop Package
@@ -127,8 +127,8 @@ export default function ImageModal(props) {
                                             }                                                                    
                                         </ListItem>
                                         <ListItem>
-                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop package available</p> : (
-                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No PNG Package available</p> : (
+                                                <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                                     <Button variant="outlined" color="primary" className={classes.button}>
                                                         <Box fontFamily="Signika">
                                                             PNG Package Download
@@ -139,8 +139,8 @@ export default function ImageModal(props) {
                                             }                         
                                         </ListItem>                                        
                                         <ListItem>
-                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop package available</p> : (
-                                                <a href={strapiHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Vector Package available</p> : (
+                                                <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
                                                     <Button variant="outlined" color="primary" className={classes.button}>
                                                         <Box fontFamily="Signika">
                                                             Vector Package Download

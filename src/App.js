@@ -14,13 +14,13 @@ import {Route, Switch} from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from "react-apollo";
 
-
-
+import {bioStockHost} from './components/HostDetails'
 
 import './App.css';
 
 const client = new ApolloClient({
-  uri: "http://localhost:1337/graphql"
+  // uri: `${bioStockHost}/graphql`
+  uri: "http://137.82.19.175:1337/graphql"
 });
 
 

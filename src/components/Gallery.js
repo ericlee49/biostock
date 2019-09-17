@@ -14,6 +14,8 @@ import gql from 'graphql-tag';
 
 import {Link as RouterLink} from 'react-router-dom';
 
+import {bioStockHost} from './HostDetails';
+
 import 'typeface-signika';
 
 const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
@@ -78,10 +80,8 @@ export default function Gallery(props){
                                     <Grid container spacing={5}>
                                         {dataToRender.map(photo => (
                                             <Grid key={photo._id} item xs={12} sm={6} md={4}>
-                                            {/* <Link component={RouterLink} to='/img/5d3f40db42ee092510093969'> */}
                                             <RouterLink
                                                 to={{
-                                                    // pathname: '/img/5d3f40db42ee092510093969',
                                                     pathname: `/img/${photo._id}`,
                                                     state: {modal: true}
                                                 }}
@@ -89,7 +89,7 @@ export default function Gallery(props){
                                             <Card className={classes.imageCard}>
                                                 <CardActionArea>
                                                     <CardMedia 
-                                                        image={'http://localhost:1337' + photo.image.url}
+                                                        image={bioStockHost + photo.image.url}
                                                         title={photo.title}
                                                         className={classes.cardMedia}
                                                     /> 
