@@ -9,6 +9,9 @@ import Box from '@material-ui/core/Box';
 
 import {makeStyles} from '@material-ui/core/styles';
 
+
+
+
 const useStyles = makeStyles({
     avatar: {
         margin: 10,
@@ -18,6 +21,9 @@ const useStyles = makeStyles({
     mainContainer: {
         marginTop: '5em',
         marginBottom: '5em',
+    },
+    title: {
+        marginBottom: '1em'
     }
 });
 
@@ -27,7 +33,7 @@ export default function About() {
         <Container maxWidth="md" className={classes.mainContainer}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Typography variant="h3">
+                    <Typography variant="h3" className={classes.title}>
                         <Box fontFamily="Signika">
                             <u>About the Project</u>
                         </Box>

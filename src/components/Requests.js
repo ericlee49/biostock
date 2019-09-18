@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container'
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -40,12 +40,25 @@ const CREATE_PHOTO_REQUEST = gql `
     }
 `;
 
-// const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
+    okButton: {
+        textDecoration: 'none',
+        textTransform: 'none',
 
-// }))
+    },
+
+    linkText: {
+        textDecoration: 'none',
+        color: '#318ce7'
+    },
+    submitButton: {
+        backgroundColor: '#769ede',
+    },
+});
 
 function ConfirmationDialog(props) {
     const {open, onClose} = props;
+    const classes = useStyles();
 
     // const handleDialogClose = () => {
     //     // onClose();
@@ -71,10 +84,12 @@ function ConfirmationDialog(props) {
                 </DialogContentText>                
             </DialogContent>
             <DialogActions>
-                {/* <Button color="primary" onClick={() => {return <Redirect to="/" />}}>
-                    OK
-                </Button> */}
-                <Link to="/about">OK</Link>
+                <Button color="primary" className={classes.okButton} >
+                    <Link to="/"className={classes.linkText}>
+                        Okay!
+                    </Link>
+                </Button> 
+                
             </DialogActions>
         </Dialog>
     )
@@ -101,6 +116,7 @@ export default function Requests() {
     const lastname = useFormInput('');
     const email = useFormInput('');
     const description = useFormInput('');
+    const classes = useStyles();
 
 
     function handleClickOpen() {
@@ -186,7 +202,8 @@ export default function Requests() {
                                 fullWidth
                                 variant="contained"
                                 color="primary" 
-                                onClick={createPhotorequest}                       
+                                onClick={createPhotorequest}
+                                className={classes.submitButton}                       
                             >
                                 <Box fontFamily="Signika">
                                     Submit Request
