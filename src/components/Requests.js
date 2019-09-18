@@ -20,8 +20,6 @@ import 'typeface-signika';
 // import {Redirect} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
-
 const CREATE_PHOTO_REQUEST = gql `
     mutation CreatePhotoRequest($firstname: String!, $lastname: String!, $email: String!, $description: String!) {
         createPhotorequest(input: {

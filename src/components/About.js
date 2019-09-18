@@ -3,7 +3,9 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-import Divider from '@material-ui/core/Divider'
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 import {makeStyles} from '@material-ui/core/styles';
 
@@ -12,27 +14,46 @@ const useStyles = makeStyles({
         margin: 10,
         width: 200,
         height: 200,
+    },
+    mainContainer: {
+        marginTop: '5em',
+        marginBottom: '5em',
     }
 });
 
 export default function About() {
     const classes = useStyles();
     return (
-        <Container maxWidth="md">
+        <Container maxWidth="md" className={classes.mainContainer}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <h1>About The Project</h1>
-                </Grid>
-                <Grid item xs={12}>
-                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                    <Typography variant="h3">
+                        <Box fontFamily="Signika">
+                            <u>About the Project</u>
+                        </Box>
+                    </Typography>
+                    <p>BioStock was created to provide free stock images for life science researchers and teachers to easily build high quality figures</p>
+                    <p>Our main goals are to:</p>
+                    <ul>
+                        <li>make this resource freely available to anyone who wants to use it</li>
+                        <li>provide users with the opportunity to make requests and provide feedback on images</li>
+                        <li>keep images in a consistent style</li>
+                        <li>provide flexibility by providing files that can be edited</li>
+                    </ul>
+                    <p>We welcome any and all feedback.</p>
+                    <p>BioStock was started in the Department of Microbiology at the University of British Columbia and we thank the department for their support of this project.</p>                    
                 </Grid>
                 <Grid item xs={12}>
                     <Divider/>
                 </Grid>
                 
                 <Grid item xs={8}>
-                    <h1>Artist: Craig Kornak</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pari</p>
+                    <Typography variant="h5">
+                        <Box fontFamily="Signika">
+                            Artist: Craig Kornak
+                        </Box>
+                    </Typography>
+                    <p>Craig is the Undergraduate Program Assistant in the Department of Microbiology at the University of British Columbia. He is an experienced user of Adobe Creative Cloud and has used these skills to create images to supplement teaching materials upon request by the department's educational leadership faculty. In this project he is excited to expand upon the type of images he has been creating and to collaborate with more researchers.</p>
                 </Grid>
                 <Grid item xs={4}>
                     <Avatar alt="Craig Kornak" src="https://source.unsplash.com/random" className={classes.avatar} />
@@ -44,8 +65,12 @@ export default function About() {
                     <Avatar alt="Linda" src="https://source.unsplash.com/random" className={classes.avatar} />
                 </Grid>                
                 <Grid item xs={8}>
-                    <h1>Scientist: Linda Horianopoulos</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pari</p>
+                    <Typography variant="h5">
+                        <Box fontFamily="Signika">
+                            Scientist: Linda Horianopoulos
+                        </Box>
+                    </Typography>
+                    <p>Linda is a PhD candidate in the Kronstad lab in the Department of Microbiology and Immunology where she studies fungi (in all their glory). Linda is the scientific consultant/expert on style, content and organization as well as providing a large portion of the impetus to bring BioStock to life. Linda also plays a key role in the format, navigation and user experience of the site. </p>
                 </Grid>
 
 
