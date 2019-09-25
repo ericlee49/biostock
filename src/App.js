@@ -19,8 +19,9 @@ import {bioStockHost} from './components/HostDetails'
 import './App.css';
 
 const client = new ApolloClient({
-  // uri: `${bioStockHost}/graphql`
-  uri: "http://137.82.19.175:1337/graphql"
+  uri: `${bioStockHost}/graphql`
+  // uri: "http://137.82.19.175:1337/graphql"
+
 });
 
 

@@ -18,6 +18,13 @@ Using the following packages:
 - *graphql-tag*: Necessary package to help parse GraphQL queries
 - *graphql*: Used to parse GraphQL queries
 
+## Email:
+Strapi provides us with an email endpoint.  We send a POST to /email.  The post contains the following object:
+```
+{ to: 'user@ubc.ca',
+  subject: 'Strapi Email',
+  text: 'hello world' }
+```
 
 ## React Router:
 The App Component is set inside a route, so we are able to access the component props necessary to complete our custom routing.
