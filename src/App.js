@@ -9,6 +9,7 @@ import Soon from './components/Soon';
 import Gallery from './components/Gallery';
 import ImageSoloPage from './components/ImageSoloPage';
 import ImageModal from './components/ImageModal';
+import SearchResultPage from './components/SearchResultPage';
 
 import {Route, Switch} from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
@@ -17,6 +18,7 @@ import {ApolloProvider} from "react-apollo";
 import {bioStockHost} from './components/HostDetails'
 
 import './App.css';
+
 
 const client = new ApolloClient({
   uri: `${bioStockHost}/graphql`
@@ -67,6 +69,7 @@ class App extends React.Component {
           <Route exact path='/about' component={About}/>
           <Route exact path='/soon' component={Soon}/>
           <Route path='/test/:id' component={ImageModal}/>
+          <Route path='/search' component={SearchResultPage}/>
         </Switch>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route path='/gallery/:category' component={Gallery}/> 
