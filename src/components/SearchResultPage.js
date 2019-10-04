@@ -36,7 +36,19 @@ const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
     }
 `
 
-const GET_STOCKPHOTOS_WITH_CATEGORY_2 = gql `
+// const SEARCH_QUERY = gql `
+//     query Photos{
+//         stockphotos(where:{title_contains: "HELLO"}) {
+//             _id
+//             title
+//             image {
+//                 url
+//             }
+//         }
+//     }
+// `
+
+const SEARCH_QUERY = gql `
     query Photos($queryString: String!) {
         stockphotos(where:{title_contains: $queryString}) {
             _id
@@ -45,9 +57,8 @@ const GET_STOCKPHOTOS_WITH_CATEGORY_2 = gql `
                 url
             }
         }
-    }
+    }    
 `
-
 
 // Styles:
 const useStyles = makeStyles(theme => ({ 
@@ -69,24 +80,28 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function SearchResultPage() {
+export default function SearchResultPage(props) {
     const classes = useStyles();
 
     return (
         <div>
-            <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{category: `microbiology`}}>  
+            {/* <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{category: microbiology}}>   */}
+            {/* <Query query={SEARCH_QUERY} variables={{queryString: `${props.match.params.query}`}}>   */}
+            <Query query={SEARCH_QUERY} variables={{queryString: "HELLO"}}>  
+
                 {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;
                         if (error) return <p>Error</p>;
-                        const dataToRender = data.categories[0].stockphotos;
+                        const dataToRender = data.stockphotos;
+                        console.log(props.match.params);
                         return (
                             <div>
                                 <Container maxWidth='lg'>
                                     <Typography variant="h3" align="center" gutterBottom className={classes.title}>
                                         <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>
                                             {/* {data.categories[0].title} */}
-                                            Your Search Results for:
+                                            Your Search Results for: 'hello'
                                         </Box>
                                     </Typography>
                                 </Container>                                 

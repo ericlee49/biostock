@@ -50,7 +50,8 @@ class App extends React.Component {
   render() {
     let {location} = this.props;
     // console.log('APP PROPS:');
-    // console.log(this.props);
+     
+    console.log(this.props);
 
     // IS NOT A MODAL
     let isModal = !!(
@@ -69,10 +70,10 @@ class App extends React.Component {
           <Route exact path='/about' component={About}/>
           <Route exact path='/soon' component={Soon}/>
           <Route path='/test/:id' component={ImageModal}/>
-          <Route path='/search' component={SearchResultPage}/>
+          <Route path='/search/:query' component={SearchResultPage}/>
+          <Route path='/gallery/:category' component={Gallery}/> 
         </Switch>
         <Switch location={isModal ? this.previousLocation : location}>
-          <Route path='/gallery/:category' component={Gallery}/> 
           <Route path='/img/:id' component={ImageSoloPage}/>       
         </Switch>
         {isModal ? <Route path='/img/:id' component={ImageModal} /> : null}
