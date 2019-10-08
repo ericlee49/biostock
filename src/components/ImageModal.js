@@ -16,7 +16,7 @@ import gql from 'graphql-tag';
 
 import 'typeface-signika';
 
-import {bioStockHost, strapiHost} from './HostDetails';
+import {bioStockHost} from './HostDetails';
 
 //GraphQL query:
 const GET_IMAGE = gql `

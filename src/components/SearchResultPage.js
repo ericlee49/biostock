@@ -38,7 +38,7 @@ const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
 
 // const SEARCH_QUERY = gql `
 //     query Photos{
-//         stockphotos(where:{title_contains: "HELLO"}) {
+//         stockphotos(where:{title_contains: "agar"}) {
 //             _id
 //             title
 //             image {
@@ -49,8 +49,8 @@ const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
 // `
 
 const SEARCH_QUERY = gql `
-    query Photos($queryString: String!) {
-        stockphotos(where:{title_contains: $queryString}) {
+    query Photos($queryString: JSON) {
+        stockphotos(where: $queryString) {
             _id
             title
             image {
@@ -82,26 +82,31 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchResultPage(props) {
     const classes = useStyles();
+    const param = props.match.params.query
 
     return (
         <div>
             {/* <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{category: microbiology}}>   */}
-            {/* <Query query={SEARCH_QUERY} variables={{queryString: `${props.match.params.query}`}}>   */}
-            <Query query={SEARCH_QUERY} variables={{queryString: "HELLO"}}>  
+            {/* <Query query={SEARCH_QUERY}>   */}
+
+            <Query query={SEARCH_QUERY} variables={{"queryString": {"title_contains": param}}}>  
+
+
 
                 {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;
                         if (error) return <p>Error</p>;
                         const dataToRender = data.stockphotos;
-                        console.log(props.match.params);
+                        // console.log(props.match.params);
+                        console.log(param);
                         return (
                             <div>
                                 <Container maxWidth='lg'>
                                     <Typography variant="h3" align="center" gutterBottom className={classes.title}>
                                         <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>
                                             {/* {data.categories[0].title} */}
-                                            Your Search Results for: 'hello'
+                                            Your Search Results for: '{param}'
                                         </Box>
                                     </Typography>
                                 </Container>                                 
