@@ -29,6 +29,12 @@ const GET_IMAGE = gql `
             vectorGraphicPackage {
                 url
             }
+            pngPackage {
+                url
+            }
+            psdPackage {
+                url
+            }
         }
     }
 `;
@@ -115,8 +121,8 @@ export default function ImageModal(props) {
                                             </Typography>
                                         </ListItem>
                                         <ListItem>
-                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Photoshop Package available</p> : (
-                                                <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                            { (data.stockphoto.psdPackage === null) ? <p>No Photoshop Package available</p> : (
+                                                <a href={bioStockHost + data.stockphoto.psdPackage.url} className={classes.downloadLink} download>
                                                     <Button variant="outlined" color="primary" className={classes.button}>
                                                         <Box fontFamily="Signika">
                                                             Photoshop Package
@@ -127,8 +133,8 @@ export default function ImageModal(props) {
                                             }                                                                    
                                         </ListItem>
                                         <ListItem>
-                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No PNG Package available</p> : (
-                                                <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                            { (data.stockphoto.pngPackage === null) ? <p>No PNG Package available</p> : (
+                                                <a href={bioStockHost + data.stockphoto.pngPackage.url} className={classes.downloadLink} download>
                                                     <Button variant="outlined" color="primary" className={classes.button}>
                                                         <Box fontFamily="Signika">
                                                             PNG Package Download

@@ -26,6 +26,12 @@ const GET_IMAGE = gql `
             vectorGraphicPackage {
                 url
             }
+            pngPackage {
+                url
+            }
+            psdPackage {
+                url
+            }
         }
     }
 `;
@@ -81,16 +87,16 @@ export default function ImageSoloPage(props){
                                     </Box>
                                 </Typography>
                                 <img src={bioStockHost + data.stockphoto.image.url} className={classes.stockPhoto} alt="StockPhoto" />
-                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available Photoshop package </p> : (
-                                    <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                { (data.stockphoto.psdPackage === null) ? <p>no available Photoshop package </p> : (
+                                    <a href={bioStockHost + data.stockphoto.psdPackage.url} className={classes.downloadLink} download>
                                         <Button variant="outlined" color="primary" className={classes.button}>
                                             Photoshop Package
                                             <SaveIcon className={classes.rightIcon} />
                                         </Button>  
                                     </a>                                    
                                 )}
-                                { (data.stockphoto.vectorGraphicPackage === null) ? <p>no available PNG package </p> : (
-                                    <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                { (data.stockphoto.pngPackage === null) ? <p>no available PNG package </p> : (
+                                    <a href={bioStockHost + data.stockphoto.pngPackage.url} className={classes.downloadLink} download>
                                         <Button variant="outlined" color="primary" className={classes.button}>
                                             PNG Package
                                             <SaveIcon className={classes.rightIcon} />
