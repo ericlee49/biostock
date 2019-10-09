@@ -18,9 +18,24 @@ import {bioStockHost} from './HostDetails';
 
 import 'typeface-signika';
 
+// const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
+//     query Photos($category: String!) {
+//         categories(where:{path_contains: $category}) {
+//             title
+//             stockphotos {
+//                 _id
+//                 title
+//                 image {
+//                     url
+//                 }
+//             }
+//         }
+//     }
+// `
+
 const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
-    query Photos($category: String!) {
-        categories(where:{path_contains: $category}) {
+    query Photos($category: JSON) {
+        categories(where:$category) {
             title
             stockphotos {
                 _id
@@ -58,10 +73,11 @@ const useStyles = makeStyles(theme => ({
 export default function Gallery(props){
     // IMAGES PAGE COMPONENT STATE:
     const classes = useStyles();
+    const param = props.match.params.category;
     return (
-
         <div>
-            <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{category: `${props.match.params.category}`}}>
+            <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{"category": {"path_contains": param}}}>  
+    
                 {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading</p>;

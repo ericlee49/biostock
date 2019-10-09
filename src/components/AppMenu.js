@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {makeStyles} from '@material-ui/core/styles';
+import {fade, makeStyles} from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,6 +10,11 @@ import Box from '@material-ui/core/Box';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/'
+
+
 
 import { Link, NavLink } from 'react-router-dom';
 
@@ -65,7 +70,21 @@ const useStyles = makeStyles(theme => ({
             color: 'white',
             fontSize: "1.1em"
         },
-    },      
+    },
+    search: {
+        position: 'relative',
+        marginLeft: 0,
+        // borderRadius: "0.2em",
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(1),
+            width: 'auto',
+        },
+    }      
 }))
 
 export default function AppMenu() {
@@ -75,7 +94,7 @@ export default function AppMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
 
-
+    // This is for the collapsed Menu:
     const renderMenu = (
         <Menu
             open={Boolean(anchorEl)}
@@ -133,35 +152,27 @@ export default function AppMenu() {
                     <div className={classes.grow}/>
                     <div className={classes.desktopNavGroup}>
                         <nav className={classes.navigation}>
-                     {/* <Link className={classes.toolbarLink}>Tutorials</Link>
-                     <Link href='/requests' className={classes.toolbarLink}>Requests</Link>
-                     <Link className={classes.toolbarLink}>About</Link>  */}
-                     <NavLink to='/soon' className={classes.toolbarLink}>                    
-                         <Box fontFamily="Signika" fontWeight="500" >
-                             TUTORIALS
-                         </Box> 
-                     </NavLink>
-                     <NavLink to='/about' className={classes.toolbarLink}>
-                         <Box fontFamily="Signika" fontWeight="500" >
-                             ABOUT
-                         </Box>                     
-                     </NavLink>
-                     <NavLink to='/requests' className={classes.toolbarLink}>
-                         <Box fontFamily="Signika" fontWeight="500" >
-                             REQUESTS
-                         </Box>    
-                     </NavLink>
-                     {/* <NavLink to='/soon' className={classes.toolbarLink}>                    
-                         TUTORIALS                      
-                     </NavLink>
-                     <NavLink to='/about' className={classes.toolbarLink}>
-                         ABOUT
-                     </NavLink>
-                     <NavLink to='/requests' className={classes.toolbarLink}>
-                         REQUESTS
-                     </NavLink>                     */}
-                 </nav>
+                            <NavLink to='/soon' className={classes.toolbarLink}>                    
+                                <Box fontFamily="Signika" fontWeight="500" >
+                                    TUTORIALS
+                                </Box> 
+                            </NavLink>
+                            <NavLink to='/about' className={classes.toolbarLink}>
+                                <Box fontFamily="Signika" fontWeight="500" >
+                                    ABOUT
+                                </Box>                     
+                            </NavLink>
+                            <NavLink to='/requests' className={classes.toolbarLink}>
+                                <Box fontFamily="Signika" fontWeight="500" >
+                                    REQUESTS
+                                </Box>    
+                            </NavLink>
+                            
+                        </nav>
                     </div>
+                    <div className={classes.search}>
+                        <SearchIcon />
+                    </div> 
                     <IconButton 
                         onClick={handleClick} 
                         className={classes.mobileMenuIcon}

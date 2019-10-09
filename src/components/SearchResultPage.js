@@ -21,33 +21,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 
 
-const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
-    query Photos($category: String!) {
-        categories(where:{path_contains: $category}) {
-            title
-            stockphotos {
-                _id
-                title
-                image {
-                    url
-                }
-            }
-        }
-    }
-`
-
-// const SEARCH_QUERY = gql `
-//     query Photos{
-//         stockphotos(where:{title_contains: "agar"}) {
-//             _id
-//             title
-//             image {
-//                 url
-//             }
-//         }
-//     }
-// `
-
 const SEARCH_QUERY = gql `
     query Photos($queryString: JSON) {
         stockphotos(where: $queryString) {
