@@ -12,7 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/'
+import InputBase from '@material-ui/core/InputBase';
 
 
 
@@ -70,11 +70,14 @@ const useStyles = makeStyles(theme => ({
             color: 'white',
             fontSize: "1.1em"
         },
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        },
     },
     search: {
         position: 'relative',
         marginLeft: 0,
-        // borderRadius: "0.2em",
+        borderRadius: "0.3em",
         backgroundColor: fade(theme.palette.common.white, 0.15),
         '&:hover': {
             backgroundColor: fade(theme.palette.common.white, 0.25),
@@ -84,6 +87,28 @@ const useStyles = makeStyles(theme => ({
             marginLeft: theme.spacing(1),
             width: 'auto',
         },
+    },
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 7),
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          width: 100,
+          '&:focus': {
+            width: 160,
+          },
+        },
+      },
+    searchIcon: {
+        height: '100%',
+        width: theme.spacing(7),
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+        position: 'absolute',
     }      
 }))
 
@@ -171,7 +196,16 @@ export default function AppMenu() {
                         </nav>
                     </div>
                     <div className={classes.search}>
-                        <SearchIcon />
+                        <div className={classes.searchIcon}>
+                            <SearchIcon />
+                        </div>
+                        <InputBase 
+                            placeholder="Search..."
+                            classes={{
+                                input: classes.inputInput,
+                                root: classes.inputRoot
+                            }}
+                        />
                     </div> 
                     <IconButton 
                         onClick={handleClick} 
