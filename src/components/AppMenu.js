@@ -70,7 +70,7 @@ const useStyles = makeStyles(theme => ({
             color: 'white',
             fontSize: "1.1em"
         },
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             display: 'none',
         },
     },
@@ -128,6 +128,13 @@ export default function AppMenu() {
             onClose={handleClose}
             className={classes.mobileMenu}
         >
+            <MenuItem onClick={handleClose}>
+                <NavLink to='/' className={classes.toolbarLink}>                    
+                    <Box fontFamily="Signika" fontWeight="500" >
+                        HOME
+                    </Box> 
+                </NavLink>            
+            </MenuItem>        
             <MenuItem onClick={handleClose}>
                 <NavLink to='/requests' className={classes.toolbarLink}>                    
                     <Box fontFamily="Signika" fontWeight="500" >

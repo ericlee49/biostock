@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box'
 
@@ -66,6 +66,14 @@ const useStyles = makeStyles(theme => ({
     },    
     title: {
         marginTop: '1em',
+    },
+    gridItem: {
+        paddingLeft: '1em',
+        paddingRight: '1em',
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: '0.5em',
+            paddingRight: '0.5em',
+        },
     }
 }));
 
@@ -93,26 +101,25 @@ export default function Gallery(props){
                                     </Typography>
                                 </Container>                                 
                                 <Container maxWidth="md" className={classes.imageGallery}>
-                                    <Grid container spacing={5}>
+                                    <Grid container>
                                         {dataToRender.map(photo => (
-                                            <Grid key={photo._id} item xs={12} sm={6} md={4}>
-                                            <RouterLink
-                                                to={{
-                                                    pathname: `/img/${photo._id}`,
-                                                    state: {modal: true}
-                                                }}
-                                            >
-                                            <Card className={classes.imageCard}>
-                                                <CardActionArea>
-                                                    <CardMedia 
-                                                        image={bioStockHost + photo.image.url}
-                                                        title={photo.title}
-                                                        className={classes.cardMedia}
-                                                    /> 
-                                                </CardActionArea>                           
-                                            </Card>                                             
-                                            </RouterLink>  
-
+                                            <Grid key={photo._id} item xs={4} sm={4} md={4} className={classes.gridItem}>
+                                                <RouterLink
+                                                    to={{
+                                                        pathname: `/img/${photo._id}`,
+                                                        state: {modal: true}
+                                                    }}
+                                                >
+                                                <Card className={classes.imageCard}>
+                                                    <CardActionArea>
+                                                        <CardMedia 
+                                                            image={bioStockHost + photo.image.url}
+                                                            title={photo.title}
+                                                            className={classes.cardMedia}
+                                                        /> 
+                                                    </CardActionArea>                           
+                                                </Card>                                             
+                                                </RouterLink>  
                                             </Grid>
                                         ))}                                       
                                     </Grid>
