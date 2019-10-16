@@ -16,7 +16,7 @@ import InputBase from '@material-ui/core/InputBase';
 
 
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 
 
 
@@ -117,10 +117,11 @@ export default function AppMenu() {
 
     //STATES:
     const [anchorEl, setAnchorEl] = React.useState(null);
-
+    const [searchField, setSearchField] = React.useState("");
+    const [toSearch, setToSearch] = React.useState(false);
 
     // This is for the collapsed Menu:
-    const renderMenu = (
+    const collapsedMenu = (
         <Menu
             open={Boolean(anchorEl)}
             anchorEl = {anchorEl}
@@ -159,17 +160,8 @@ export default function AppMenu() {
             
         </Menu>
     );
-
-    function handleClick(event) {
-        setAnchorEl(event.currentTarget);
-        console.log(event);
-    }
-
-    function handleClose() {
-        setAnchorEl(null);
-    }
-
-    return (
+    
+    const fullMenu = (
         <div>
             <AppBar position="static">
                 <Toolbar className={classes.toolbarStyle}>
@@ -212,6 +204,9 @@ export default function AppMenu() {
                                 input: classes.inputInput,
                                 root: classes.inputRoot
                             }}
+                            onChange={handleSearchInputChange}
+                            onKeyPress={handleKeyPress}
+                            value={searchField}
                         />
                     </div> 
                     <IconButton 
@@ -223,7 +218,45 @@ export default function AppMenu() {
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            {renderMenu}
+            {collapsedMenu}
         </div>
-    )
+    );
+
+    function handleClick(event) {
+        setAnchorEl(event.currentTarget);
+        console.log(event);
+    }
+
+    function handleClose() {
+        setAnchorEl(null);
+    }
+
+    function handleSearchInputChange(event) {
+        setSearchField(event.target.value);
+    };
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            console.log(searchField)
+            setSearchField("")
+            setToSearch(true);
+        }
+    };    
+
+
+    if (toSearch === true) {
+        return (
+            <div>
+                {fullMenu}
+                <Redirect to='/about'></Redirect>
+            </div>
+            
+        )
+    } else {
+        return (
+            <div>
+            {fullMenu}
+            </div>
+            
+        )
+    }
 }
