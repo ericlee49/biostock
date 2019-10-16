@@ -18,6 +18,8 @@ import 'typeface-signika';
 
 import {bioStockHost} from './HostDetails';
 
+import SaveIcon from '@material-ui/icons/SaveAlt';
+
 //GraphQL query:
 const GET_IMAGE = gql `
  query Photo($imageId: ID!){
@@ -40,8 +42,19 @@ const GET_IMAGE = gql `
 `;
 
 const useStyles = makeStyles(theme => ({
-    listStyle: {
+
+    dialogStyle: {
+        // height: '90vh'
+    },
+    containerDivStyle: {
         backgroundColor: '#bac8de',
+        textAlign: "center",
+        margin: "2em"
+
+    },
+    gridContainer: {
+        backgroundColor: '#bac8de',
+
     },
     centerImage: {
         // display: "block",
@@ -52,10 +65,8 @@ const useStyles = makeStyles(theme => ({
         // backgroundColor: "red"
 
     },
-    centerGrid: {
-        // verticalAlign: "middle",
-        // minHeight: '50vh',
-        // justifyContent: "center",
+    imageTitle: {
+        marginBottom: "0.5em",
     },
     button: {
         margin: theme.spacing(1),
@@ -63,6 +74,9 @@ const useStyles = makeStyles(theme => ({
     },
     downloadLink: {
         textDecoration: 'none',
+    },
+    rightSaveIcon: {
+        marginLeft: '0.25em',
     }
 
 }));
@@ -90,14 +104,13 @@ export default function ImageModal(props) {
             fullWidth={true}
             maxWidth="xs"
             onClose={handleClose}
+            className={classes.dialogStyle}
         >
             <Query query={GET_IMAGE} variables={{imageId: imageId}}>
                 {
                     ({loading, error, data}) => {
                         if (loading) return <p>Loading...</p>
                         if (error) return <p>Error!</p>
-                        console.log("HERE IS DATA");
-                        console.log(data);
                         return (
                             <Grid  container>
                                 <Grid item xs={12}>
@@ -105,58 +118,49 @@ export default function ImageModal(props) {
                                         container
                                         direction="column"
                                         alignItems="center"
-                                        className={classes.centerGrid}
                                     >
                                         <img src={bioStockHost + data.stockphoto.image.url} className={classes.centerImage} alt="StockPhoto"/>
                                     </Grid>
                                 </Grid>
-                                <Grid item xs={12} className={classes.listStyle}>
-                                    <List >
-                                        <ListItem>
-                                            <Typography variant="h4">
+
+                                <Grid item xs={12} className={classes.gridContainer}>
+                                    <div className={classes.containerDivStyle}>
+                                        <Typography variant="h4" align="center" className={classes.imageTitle}>
+                                            <Box fontFamily="Signika">
+                                            {data.stockphoto.title}
+                                            </Box>
+                                        </Typography>
+                                        { (data.stockphoto.psdPackage === null) ? <p>no available Photoshop package </p> : (
+                                            <a href={bioStockHost + data.stockphoto.psdPackage.url} className={classes.downloadLink} download>
+                                                <Button variant="outlined" color="primary" className={classes.button}>
+                                                    <Box fontFamily="Signika">
+                                                        photoshop package
+                                                    </Box>
+                                                    <SaveIcon className={classes.rightSaveIcon} />
+                                                </Button>  
+                                            </a>                                    
+                                        )}
+                                        { (data.stockphoto.pngPackage === null) ? <p>no available PNG package </p> : (
+                                            <a href={bioStockHost + data.stockphoto.pngPackage.url} className={classes.downloadLink} download>
+                                                <Button variant="outlined" color="primary" className={classes.button}>
                                                 <Box fontFamily="Signika">
-                                                    {data.stockphoto.title}
+                                                    PNG Package
                                                 </Box>
-                                                
-                                            </Typography>
-                                        </ListItem>
-                                        <ListItem>
-                                            { (data.stockphoto.psdPackage === null) ? <p>No Photoshop Package available</p> : (
-                                                <a href={bioStockHost + data.stockphoto.psdPackage.url} className={classes.downloadLink} download>
-                                                    <Button variant="outlined" color="primary" className={classes.button}>
-                                                        <Box fontFamily="Signika">
-                                                            Photoshop Package
-                                                        </Box>
-                                                    </Button>  
-                                                </a> 
-                                                )
-                                            }                                                                    
-                                        </ListItem>
-                                        <ListItem>
-                                            { (data.stockphoto.pngPackage === null) ? <p>No PNG Package available</p> : (
-                                                <a href={bioStockHost + data.stockphoto.pngPackage.url} className={classes.downloadLink} download>
-                                                    <Button variant="outlined" color="primary" className={classes.button}>
-                                                        <Box fontFamily="Signika">
-                                                            PNG Package Download
-                                                        </Box>
-                                                    </Button>  
-                                                </a> 
-                                                )
-                                            }                         
-                                        </ListItem>                                        
-                                        <ListItem>
-                                            { (data.stockphoto.vectorGraphicPackage === null) ? <p>No Vector Package available</p> : (
-                                                <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
-                                                    <Button variant="outlined" color="primary" className={classes.button}>
-                                                        <Box fontFamily="Signika">
-                                                            Vector Package Download
-                                                        </Box>
-                                                    </Button>  
-                                                </a> 
-                                                )
-                                            }                         
-                                        </ListItem>
-                                    </List>                
+                                                    <SaveIcon className={classes.rightSaveIcon} />
+                                                </Button>  
+                                            </a>                                    
+                                        )}
+                                        { (data.stockphoto.vectorGraphicPackage === null) ? <Box fontFamily="Signika">No Vector Package Available </Box> : (
+                                            <a href={bioStockHost + data.stockphoto.vectorGraphicPackage.url} className={classes.downloadLink} download>
+                                                <Button variant="outlined" color="primary" className={classes.button}>
+                                                <Box fontFamily="Signika">
+                                                    Vector Graphics Package
+                                                </Box>    
+                                                    <SaveIcon className={classes.rightSaveIcon} />
+                                                </Button>  
+                                            </a>                                    
+                                        )}
+                                    </div>                                                
                                 </Grid>
                             </Grid>                              
                         )
