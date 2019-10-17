@@ -78,6 +78,10 @@ const useStyles = makeStyles(theme => ({
     },
     process: {
         margin: theme.spacing(2),
+    },
+    loadingContainer: {
+        backgroundColor: 'red',
+        textAlign: 'center',
     }
 }));
 
@@ -88,11 +92,12 @@ const useStyles = makeStyles(theme => ({
 //     )
 // }
  
-export function loadingGroup() {
+function LoadingGroup() {
+    const classes = useStyles();
     return (
         <div>
-            <Container maxWidth='sm'>
-                <CircularProgress />
+            <Container maxWidth='sm' className={classes.loadingContainer}>
+                <CircularProgress className={classes.progress} />
             </Container>
         </div>
     );
@@ -111,12 +116,11 @@ export default function Gallery(props){
     
                 {
                     ({loading, error, data}) => {
-                        if (loading) return <CircularProgress className={classes.progress} />;
+                        if (loading) return <LoadingGroup/>;
                         if (error) return <p>Error</p>;
                         const dataToRender = data.categories[0].stockphotos;
                         return (
                             <div>
-                                {loadingGroup}
                                 <Container maxWidth='lg'>
                                     <Typography variant="h3" align="center" gutterBottom className={classes.title}>
                                         <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>
