@@ -9,7 +9,8 @@ import Box from '@material-ui/core/Box';
 
 import {makeStyles} from '@material-ui/core/styles';
 
-
+import lindaImage from '../assets/linda_about.jpg';
+import craigImage from '../assets/craig_about.jpg';
 
 
 const useStyles = makeStyles({
@@ -62,13 +63,13 @@ export default function About() {
                     <p>Craig is the Undergraduate Program Assistant in the Department of Microbiology at the University of British Columbia. He is an experienced user of Adobe Creative Cloud and has used these skills to create images to supplement teaching materials upon request by the department's educational leadership faculty. In this project he is excited to expand upon the type of images he has been creating and to collaborate with more researchers.</p>
                 </Grid>
                 <Grid item xs={4}>
-                    <Avatar alt="Craig Kornak" src="https://source.unsplash.com/random" className={classes.avatar} />
+                    <Avatar alt="Craig Kornak" src={craigImage} className={classes.avatar} />
                 </Grid>
                 <Grid item xs={12}>
                     <Divider/>
                 </Grid>
                 <Grid item xs={4}>
-                    <Avatar alt="Linda" src="https://source.unsplash.com/random" className={classes.avatar} />
+                    <Avatar alt="Linda" src={lindaImage} className={classes.avatar} />
                 </Grid>                
                 <Grid item xs={8}>
                     <Typography variant="h5">

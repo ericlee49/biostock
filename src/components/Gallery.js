@@ -7,7 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box'
+import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
@@ -37,7 +38,7 @@ const GET_STOCKPHOTOS_WITH_CATEGORY = gql `
     query Photos($category: JSON) {
         categories(where:$category) {
             title
-            stockphotos {
+            stockphotos(sort: "title:asc") {
                 _id
                 title
                 image {
@@ -74,25 +75,48 @@ const useStyles = makeStyles(theme => ({
             paddingLeft: '0.5em',
             paddingRight: '0.5em',
         },
+    },
+    process: {
+        margin: theme.spacing(2),
     }
 }));
+
+// function loadingCircle(props) {
+//     const classes = useStyles();
+//     return (
+//         <CircularProgress className={classes.progress} />
+//     )
+// }
+ 
+export function loadingGroup() {
+    return (
+        <div>
+            <Container maxWidth='sm'>
+                <CircularProgress />
+            </Container>
+        </div>
+    );
+}
 
 
 export default function Gallery(props){
     // IMAGES PAGE COMPONENT STATE:
     const classes = useStyles();
     const param = props.match.params.category;
+
+
     return (
         <div>
             <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{"category": {"path_contains": param}}}>  
     
                 {
                     ({loading, error, data}) => {
-                        if (loading) return <p>Loading</p>;
+                        if (loading) return <CircularProgress className={classes.progress} />;
                         if (error) return <p>Error</p>;
                         const dataToRender = data.categories[0].stockphotos;
                         return (
                             <div>
+                                {loadingGroup}
                                 <Container maxWidth='lg'>
                                     <Typography variant="h3" align="center" gutterBottom className={classes.title}>
                                         <Box fontFamily="Signika" fontWeight="600" m={1} pt={0}>

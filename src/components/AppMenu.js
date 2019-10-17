@@ -120,6 +120,14 @@ export default function AppMenu() {
     const [searchField, setSearchField] = React.useState("");
     const [toSearch, setToSearch] = React.useState(false);
 
+    React.useEffect(() => {
+        setToSearch(false);
+        // setSearchField("");
+    })
+
+    React.useEffect(() => {
+        setSearchField("")
+    },[toSearch])
     // This is for the collapsed Menu:
     const collapsedMenu = (
         <Menu
@@ -236,18 +244,18 @@ export default function AppMenu() {
     };
     function handleKeyPress(event) {
         if (event.key === "Enter") {
-            console.log(searchField)
-            setSearchField("")
             setToSearch(true);
         }
     };    
 
 
     if (toSearch === true) {
+        const urlToRedirectTo = '/search/' + String(searchField);
+        console.log(searchField);
         return (
             <div>
                 {fullMenu}
-                <Redirect to='/about'></Redirect>
+                <Redirect to={urlToRedirectTo}></Redirect>
             </div>
             
         )
