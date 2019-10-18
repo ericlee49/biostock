@@ -62,9 +62,7 @@ export default function SearchResultPage(props) {
             {/* <Query query={GET_STOCKPHOTOS_WITH_CATEGORY} variables={{category: microbiology}}>   */}
             {/* <Query query={SEARCH_QUERY}>   */}
 
-            <Query query={SEARCH_QUERY} variables={{"queryString": {"title_contains": param}}}>  
-
-
+            <Query query={SEARCH_QUERY} variables={{"queryString": {"tag_contains": param}}}>  
 
                 {
                     ({loading, error, data}) => {

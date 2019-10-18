@@ -8,7 +8,6 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
@@ -16,6 +15,7 @@ import gql from 'graphql-tag';
 import {Link as RouterLink} from 'react-router-dom';
 
 import {bioStockHost} from './HostDetails';
+import LoadingGroup from './Loading';
 
 import 'typeface-signika';
 
@@ -76,32 +76,8 @@ const useStyles = makeStyles(theme => ({
             paddingRight: '0.5em',
         },
     },
-    process: {
-        margin: theme.spacing(2),
-    },
-    loadingContainer: {
-        backgroundColor: 'red',
-        textAlign: 'center',
-    }
 }));
 
-// function loadingCircle(props) {
-//     const classes = useStyles();
-//     return (
-//         <CircularProgress className={classes.progress} />
-//     )
-// }
- 
-function LoadingGroup() {
-    const classes = useStyles();
-    return (
-        <div>
-            <Container maxWidth='sm' className={classes.loadingContainer}>
-                <CircularProgress className={classes.progress} />
-            </Container>
-        </div>
-    );
-}
 
 
 export default function Gallery(props){

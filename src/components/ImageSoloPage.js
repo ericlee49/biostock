@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/SaveAlt';
 
+import LoadingGroup from './Loading';
 import {bioStockHost} from './HostDetails';
 
 
@@ -76,7 +77,7 @@ export default function ImageSoloPage(props){
             <Query query={GET_IMAGE} variables={{imageId: imageId}}>
                 {
                     ({loading, error, data}) => {
-                        if (loading) return <p>Loading</p>;
+                        if (loading) return <LoadingGroup />;
                         if (error) return <p>Error</p>;
                         console.log(data);
                         return (

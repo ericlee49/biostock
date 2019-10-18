@@ -66,7 +66,6 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/requests' component={Requests}/>
-          {/* <Route path='/images/:category' component={ImagesPage}/> */}
           <Route exact path='/about' component={About}/>
           <Route exact path='/soon' component={Soon}/>
           <Route path='/test/:id' component={ImageModal}/>

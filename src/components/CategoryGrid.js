@@ -14,6 +14,7 @@ import gql from 'graphql-tag';
 
 import 'typeface-signika';
 
+import LoadingGroup from './Loading';
 import {bioStockHost} from './HostDetails';
 
 // GraphQL query:
@@ -111,7 +112,7 @@ export default function CategoryGrid(){
             <Query query={CATEGORY_QUERY}>
                 {
                     ({loading, error, data}) => {
-                        if (loading) return <p>Loading</p>;
+                        if (loading) return <LoadingGroup />;
                         if (error) return <p>Error</p>;
                         const categoriesToRender = data.categories;
                         return (

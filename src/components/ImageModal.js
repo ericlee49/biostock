@@ -4,8 +4,6 @@ import React from 'react'
 import {makeStyles} from '@material-ui/core/styles'
 import Dialog from '@material-ui/core/Dialog'
 import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -16,6 +14,7 @@ import gql from 'graphql-tag';
 
 import 'typeface-signika';
 
+import LoadingGroup from './Loading';
 import {bioStockHost} from './HostDetails';
 
 import SaveIcon from '@material-ui/icons/SaveAlt';
@@ -109,7 +108,7 @@ export default function ImageModal(props) {
             <Query query={GET_IMAGE} variables={{imageId: imageId}}>
                 {
                     ({loading, error, data}) => {
-                        if (loading) return <p>Loading...</p>
+                        if (loading) return <LoadingGroup />
                         if (error) return <p>Error!</p>
                         return (
                             <Grid  container>
