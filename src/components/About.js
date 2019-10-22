@@ -54,7 +54,7 @@ export default function About() {
                     <Divider/>
                 </Grid>
                 
-                <Grid item xs={8}>
+                <Grid item xs={12} md={8}>
                     <Typography variant="h5">
                         <Box fontFamily="Signika">
                             Artist: Craig Kornak
@@ -62,16 +62,16 @@ export default function About() {
                     </Typography>
                     <p>Craig is the Undergraduate Program Assistant in the Department of Microbiology at the University of British Columbia. He is an experienced user of Adobe Creative Cloud and has used these skills to create images to supplement teaching materials upon request by the department's educational leadership faculty. In this project he is excited to expand upon the type of images he has been creating and to collaborate with more researchers.</p>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <Avatar alt="Craig Kornak" src={craigImage} className={classes.avatar} />
                 </Grid>
                 <Grid item xs={12}>
                     <Divider/>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <Avatar alt="Linda" src={lindaImage} className={classes.avatar} />
                 </Grid>                
-                <Grid item xs={8}>
+                <Grid item xs={12} md={8}>
                     <Typography variant="h5">
                         <Box fontFamily="Signika">
                             Scientist: Linda Horianopoulos

@@ -40,6 +40,10 @@ Custom hook is used for handling form inputs, the return obj provides the value 
 ### React.useEffect : used to make side effects: invoked on the initial render & all subsequent re-renders.  
 We use useEffect for our Search feature, after setting the state for our search feature, the state needs to be reset, but we already are redirected to a new page.  We use useState to set the state initially once the menu bar is rendered
 
+## Axios:
+Axios is a promise based HTTP client for the browser and node.js
+We use axios primarily for our email system: when sending a request, an email request needs to be posted and sent to our admins so they are notified of the request.
+
 ## Material UI:
 The App is mobile friendly.  We are using Material UI Hook API to implement ```makeStyle``` 
 
