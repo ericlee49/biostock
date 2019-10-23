@@ -20,6 +20,9 @@ import 'typeface-signika';
 // import {Redirect} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
+
 const CREATE_PHOTO_REQUEST = gql `
     mutation CreatePhotoRequest($firstname: String!, $lastname: String!, $email: String!, $description: String!) {
         createPhotorequest(input: {
@@ -60,14 +63,7 @@ function ConfirmationDialog(props) {
     const {open, onClose} = props;
     const classes = useStyles();
 
-    // const handleDialogClose = () => {
-    //     // onClose();
-    //     return (
-    //         <Redirect to="/" />
-    //     );
-    // }
-
-    function handleDialogClose() {
+    let handleDialogClose = () => {
         onClose();
     }
 
@@ -126,8 +122,10 @@ export default function Requests() {
     function handleClose() {
         setConfirmationDialogOpen(false);
     }
-    
 
+    function sendOffEmail() {
+        console.log("SENDING EMAIL");
+    }
 
     return (
         <div>
@@ -214,6 +212,14 @@ export default function Requests() {
 
                 </Mutation>
             </Grid>
+            <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={sendOffEmail}
+            >
+                SUBMIT EMAIL TEST
+            </Button>
 
         </Container>
         </Box>

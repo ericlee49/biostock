@@ -36,6 +36,21 @@ The App Component is set inside a route, so we are able to access the component 
 ## React Hooks:
 Custom hook is used for handling form inputs, the return obj provides the value and an event handler.  This can then be associated to each field, which then can be used as the state for the request submission.
 
+This is being used in the Requests page, a custom hook is created which returns the value (state) and an onChange function.  This is then placed into a Material UI component using the spread operator
+
+```
+<TextField
+    variant="outlined"
+    multiline
+    margin="normal"
+    rows="4"
+    required
+    fullWidth
+    label="Description"
+    {...description}
+/> 
+```
+
 
 ### React.useEffect : used to make side effects: invoked on the initial render & all subsequent re-renders.  
 We use useEffect for our Search feature, after setting the state for our search feature, the state needs to be reset, but we already are redirected to a new page.  We use useState to set the state initially once the menu bar is rendered
