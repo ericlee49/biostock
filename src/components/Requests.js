@@ -23,21 +23,23 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
-const CREATE_PHOTO_REQUEST = gql `
-    mutation CreatePhotoRequest($firstname: String!, $lastname: String!, $email: String!, $description: String!) {
-        createPhotorequest(input: {
+const CREATE_REQUEST = gql `
+    mutation CreateRequest($firstname: String!, $lastname: String!, $email: String!, $description: String!) {
+        createRequest(input: {
             data: {
                 firstname: $firstname,
                 lastname: $lastname,
                 email: $email,
                 description: $description,
+                completed: false
             }
         }) {
-            photorequest {
+            request {
                 firstname
                 lastname
                 email
                 description
+                completed
             }
         }
     }
@@ -124,6 +126,18 @@ export default function Requests() {
     }
 
     function sendOffEmail() {
+        let data = new FormData();
+        data.append('to', 'eric.lee@ubc.ca');
+        data.append('subject', 'New BioStock Request');
+
+        const body = `${firstname.value} ${lastname.value} has sent you a request.  The description: ${description.value}`
+
+        // data.append('text', description.value);
+        data.append('text' , body);
+
+        let request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:1337/email');
+        request.send(data);
         console.log("SENDING EMAIL");
     }
 
@@ -185,7 +199,7 @@ export default function Requests() {
                     </Box>
                 </Grid>
                 <Mutation
-                    mutation={CREATE_PHOTO_REQUEST}
+                    mutation={CREATE_REQUEST}
                     variables={{
                         firstname: firstname.value,
                         lastname: lastname.value,
@@ -194,13 +208,16 @@ export default function Requests() {
                     }}
                     onCompleted={handleClickOpen}
                 >
-                    {(createPhotorequest) => (
+                    {(createRequest) => (
                         <Grid item sm={12}>
                             <Button
                                 fullWidth
                                 variant="contained"
                                 color="primary" 
-                                onClick={createPhotorequest}
+                                onClick={() => {
+                                    createRequest();
+                                    sendOffEmail();
+                                }}
                                 className={classes.submitButton}                       
                             >
                                 <Box fontFamily="Signika">

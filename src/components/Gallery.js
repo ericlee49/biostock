@@ -71,6 +71,8 @@ const useStyles = makeStyles(theme => ({
     gridItem: {
         paddingLeft: '1em',
         paddingRight: '1em',
+        paddingTop: '1em',
+        paddingBottom: '1em',
         [theme.breakpoints.down('sm')]: {
             paddingLeft: '0.5em',
             paddingRight: '0.5em',
