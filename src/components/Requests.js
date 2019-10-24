@@ -20,7 +20,9 @@ import 'typeface-signika';
 // import {Redirect} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import axios from 'axios';
+import {bioStockHost} from './HostDetails';
+
+// import axios from 'axios';
 
 
 const CREATE_REQUEST = gql `
@@ -127,7 +129,7 @@ export default function Requests() {
 
     function sendOffEmail() {
         let data = new FormData();
-        data.append('to', 'eric.lee@ubc.ca');
+        data.append('to', 'craig.kornak@ubc.ca');
         data.append('subject', 'New BioStock Request');
 
         const body = `${firstname.value} ${lastname.value} has sent you a request.  The description: ${description.value}`
@@ -136,7 +138,8 @@ export default function Requests() {
         data.append('text' , body);
 
         let request = new XMLHttpRequest();
-        request.open('POST', 'http://localhost:1337/email');
+        // request.open('POST', 'http://localhost:1337/email');
+        request.open('POST' , bioStockHost + '/email')
         request.send(data);
         console.log("SENDING EMAIL");
     }
@@ -229,15 +232,6 @@ export default function Requests() {
 
                 </Mutation>
             </Grid>
-            <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                onClick={sendOffEmail}
-            >
-                SUBMIT EMAIL TEST
-            </Button>
-
         </Container>
         </Box>
         </div>
