@@ -52,8 +52,10 @@ This is being used in the Requests page, a custom hook is created which returns 
 ```
 
 
-### React.useEffect : used to make side effects: invoked on the initial render & all subsequent re-renders.  
-We use useEffect for our Search feature, after setting the state for our search feature, the state needs to be reset, but we already are redirected to a new page.  We use useState to set the state initially once the menu bar is rendered
+### React.useEffect : used to make side effects: invoked on the initial render & all subsequent re-renders. 
+React.useEffect is implemented in our App menu bar.  It takes place in the search field, ensuring that the search bar is emptied via the state as an effect everytime the component is loaded.
+
+After setting the state for our search feature, the state needs to be reset, but we already are redirected to a new page.  We use the function provided by useState hook to set the state initially once the menu bar is rendered
 
 ## Axios:
 Axios is a promise based HTTP client for the browser and node.js
