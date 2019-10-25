@@ -130,6 +130,7 @@ export default function Requests() {
     function sendOffEmail() {
         let data = new FormData();
         data.append('to', 'craig.kornak@ubc.ca');
+        // data.append('to', 'eric.lee@ubc.ca');
         data.append('subject', 'New BioStock Request');
 
         const body = `${firstname.value} ${lastname.value} has sent you a request.  The description: ${description.value}`
